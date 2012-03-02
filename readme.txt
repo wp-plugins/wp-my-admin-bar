@@ -56,6 +56,7 @@ My Cache:
 By default the My Cache menu and options are hidden (turned off)
 
 
+
 == Frequently Asked Questions ==
 [F.A.Q.](http://technerdia.com/projects/adminbar/faq.html) | 
 [Feedback](http://technerdia.com/feedback.html)
@@ -145,8 +146,10 @@ Alpha
 * Created: Feb 12, 2012
 
 
+
 == Upgrade Notice ==
 No Upgrade Information At This Time
+
 
 
 == Screenshots ==
