@@ -21,14 +21,12 @@ Three new Menus are created:
 * My Tools: Web tools for WP Developers and Bloggers.
 
 [Feedback](http://technerdia.com/feedback.html) | 
-[Download It](http://downloads.wordpress.org/plugin/wp-my-admin-bar.0.1.1.zip) | 
 [Plugin Home](http://technerdia.com/projects/adminbar/plugin.html)
 
 
 
 == Installation ==
 [View the Install Guide](http://technerdia.com/projects/adminbar/plugin.html) | 
-[Download Today](http://downloads.wordpress.org/plugin/wp-my-admin-bar.0.1.1.zip) | 
 [Feedback](http://technerdia.com/feedback.html)
 
 
@@ -60,7 +58,6 @@ By default the My Cache menu and options are hidden (turned off)
 
 == Frequently Asked Questions ==
 [F.A.Q.](http://technerdia.com/projects/adminbar/faq.html) | 
-[Download Today](http://downloads.wordpress.org/plugin/wp-my-admin-bar.0.1.1.zip) | 
 [Feedback](http://technerdia.com/feedback.html)
 
 Frequently Asked Questions:
@@ -83,7 +80,6 @@ Frequently Asked Questions:
 == Arbitrary section ==
 
 [View the Install Guide](http://technerdia.com/projects/adminbar/plugin.html) | 
-[Download Today](http://downloads.wordpress.org/plugin/wp-my-admin-bar.0.1.1.zip) | 
 [Feedback](http://technerdia.com/feedback.html)
 
 About The Settings:
@@ -106,18 +102,31 @@ NOTE: Disabling or deleting this plugin, through the WP Administration area, del
 
 
 Plugin Wishlist:
+
 * Make My-Sites sub-menus float to center or force align bottom.
+
 * My Sites Menu: Ability to disable options.
+
 * My Cache Menu: Ability to add unique cache plugin information.
+
 * My Tools Menu: Ability to add/disable options.
+
 * Network admin: Display for admin only, users, authors, etc.
+
 * Network admin: Allow other admins / registered users to have a custom MyAdminBar.
+
 * Network admin: Add view/adjust settings per site.
+
 * Network admin: Add view/adjust settings per user.
+
 * Network admin: MyAdminBar Positions.
+
 * Network admin: MyAdminBar Transparency.
+
 * Menus: Add max number of sites to display in My Sites & My Cache.
+
 * Menus: Either - Add pages to menus, group menus into sub-sub-groups, or custom load fake menu to select active site (group) list.
+
 * Menus: Disable query on menus until menu option is activated.
 
 
@@ -142,7 +151,6 @@ No Upgrade Information At This Time
 
 == Screenshots ==
 [Screen Shots](http://technerdia.com/projects/adminbar/screenshots.html) | 
-[Download Today](http://downloads.wordpress.org/plugin/wp-my-admin-bar.0.1.1.zip) | 
 [Feedback](http://technerdia.com/feedback.html)
 
 1) My Sites, My Cache and My Tools Menu
