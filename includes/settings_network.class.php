@@ -2,7 +2,7 @@
 /**
  * WP My Admin Bar
  * @package WP My Admin Bar
- * @author Chris Winters <tribalnerd@technerdia.com>
+ * @author tribalNerd (tribalnerd@technerdia.com)
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html

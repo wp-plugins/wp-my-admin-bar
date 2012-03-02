@@ -2,11 +2,11 @@
 /**
  * WP My Admin Bar
  * @package WP My Admin Bar
- * @author Chris Winters <tribalnerd@technerdia.com>
+ * @author tribalNerd (tribalnerd@technerdia.com)
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1
+ * @version 0.1.1
  */
 
 
@@ -157,9 +157,9 @@ class mySites {
 
 			$text_addcont 	= __('Add Content', 'wp-my-admin-bar');
 
-			$text_addpost 	= __('Add Page', 'wp-my-admin-bar');
-			$text_addpage 	= __('Add Media', 'wp-my-admin-bar');
-			$text_addmedia 	= __('Add Link', 'wp-my-admin-bar');
+			$text_addpost 	= __('Add Post', 'wp-my-admin-bar');
+			$text_addpage 	= __('Add Page', 'wp-my-admin-bar');
+			$text_addmedia 	= __('Add Media', 'wp-my-admin-bar');
 			$text_addlink 	= __('Add Link', 'wp-my-admin-bar');
 			
 			$text_pstpge 	= __('Posts and Pages', 'wp-my-admin-bar');
@@ -184,7 +184,7 @@ class mySites {
 							delete_site_transient( 'multisite_site_list' );
 					}
 
-					$site_list = $wpdb->get_results( $wpdb->prepare('SELECT blog_id FROM wp_blogs ORDER BY blog_id') );
+					$site_list = $wpdb->get_results( $wpdb->prepare( "SELECT blog_id FROM $wpdb->blogs ORDER BY blog_id" ) );
 					set_site_transient( 'multisite_site_list', $site_list, 86400 );
 				}
 

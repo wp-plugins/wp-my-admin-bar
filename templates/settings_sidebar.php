@@ -2,13 +2,12 @@
 /**
  * WP My Admin Bar
  * @package WP My Admin Bar
- * @author Chris Winters <tribalnerd@technerdia.com>
+ * @author tribalNerd (tribalnerd@technerdia.com)
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1
+ * @version 0.1.1
  */
-
 if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 ?>
 <div class="inner-sidebar">
@@ -17,7 +16,7 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 			<div class="inside">
 				<ul>
 					<li>&bull; <a href="http://technerdia.com/projects/adminbar/plugin.html"><?php _e('Plugin Home Page', 'wp-my-admin-bar');?></a></li>
-					<li>&bull; <a href="#"><?php _e('Plugin Wordpress.org', 'wp-my-admin-bar');?></a></li>
+					<li>&bull; <a href="http://wordpress.org/extend/plugins/wp-my-admin-bar/"><?php _e('Plugin at Wordpress.org', 'wp-my-admin-bar');?></a></li>
 					<li>&bull; <a href="http://technerdia.com/feedback.html"><?php _e('Submit Feedback', 'wp-my-admin-bar');?></a></li>
 				</ul>
 			</div> <!-- end inside -->
