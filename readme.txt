@@ -24,6 +24,7 @@ The 'Wp My Admin Bar' Plugin is a Multisite Plugin, which recreates the default 
 Works on standalone Wordpress installs, Multisite Installs and unique sites within a Network.
 
 [Submit Feedback For Improvements](http://technerdia.com/feedback.html) | 
+[Screenshots](http://technerdia.com/projects/adminbar/screenshots.html) | 
 [Plugin Home](http://technerdia.com/projects/adminbar/plugin.html)
 
 **Don't Forget To Rate The WP My Admin Bar Plugin ------------------>
@@ -32,6 +33,7 @@ Works on standalone Wordpress installs, Multisite Installs and unique sites with
 
 == Installation ==
 [View the Install Guide](http://technerdia.com/projects/adminbar/plugin.html) | 
+[Screenshots](http://technerdia.com/projects/adminbar/screenshots.html) | 
 [Feedback](http://technerdia.com/feedback.html)
 
 
@@ -65,6 +67,7 @@ By default the My Cache menu and options are hidden (turned off)
 
 == Frequently Asked Questions ==
 [F.A.Q.](http://technerdia.com/projects/adminbar/faq.html) | 
+[Screenshots](http://technerdia.com/projects/adminbar/screenshots.html) | 
 [Feedback](http://technerdia.com/feedback.html)
 
 ### Frequently Asked Questions:
@@ -89,6 +92,7 @@ By default the My Cache menu and options are hidden (turned off)
 == Arbitrary section ==
 
 [View the Install Guide](http://technerdia.com/projects/adminbar/plugin.html) | 
+[Screenshots](http://technerdia.com/projects/adminbar/screenshots.html) | 
 [Feedback](http://technerdia.com/feedback.html)
 
 ### About The Settings:
@@ -170,7 +174,5 @@ No Upgrade Information At This Time
 
 
 == Screenshots ==
-[More Screen Shots](http://technerdia.com/projects/adminbar/screenshots.html) | 
-[Feedback](http://technerdia.com/feedback.html)
 
 1. Collage of Wp My Admin Bar Features.
