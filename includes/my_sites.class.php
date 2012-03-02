@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.1
+ * @version 0.1.2
  */
 
 
@@ -23,7 +23,7 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 	function removeMySites() {
 		global $wp_admin_bar;
 			$wp_admin_bar->remove_menu('my-sites');
-			$wp_admin_bar->remove_menu('site-name');
+			//$wp_admin_bar->remove_menu('site-name'); /* Commented out on version 0.1.2 */
 	}
 	add_action( 'wp_before_admin_bar_render', 'removeMySites', 0 );
 

@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.1
+ * @version 0.1.2
  */
 if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 ?>
@@ -15,9 +15,9 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 		<h3><span><?php _e('The WP-MyAdminBar', 'wp-my-admin-bar');?></span></h3>
 			<div class="inside">
 				<ul>
-					<li>&bull; <a href="http://technerdia.com/projects/adminbar/plugin.html"><?php _e('Plugin Home Page', 'wp-my-admin-bar');?></a></li>
-					<li>&bull; <a href="http://wordpress.org/extend/plugins/wp-my-admin-bar/"><?php _e('Plugin at Wordpress.org', 'wp-my-admin-bar');?></a></li>
-					<li>&bull; <a href="http://technerdia.com/feedback.html"><?php _e('Submit Feedback', 'wp-my-admin-bar');?></a></li>
+					<li>&bull; <a href="http://technerdia.com/projects/adminbar/plugin.html" target="_blank"><?php _e('Plugin Home Page', 'wp-my-admin-bar');?></a></li>
+					<li>&bull; <a href="http://wordpress.org/extend/plugins/wp-my-admin-bar/" target="_blank"><?php _e('Plugin at Wordpress.org', 'wp-my-admin-bar');?></a></li>
+					<li>&bull; <a href="http://technerdia.com/feedback.html" target="_blank"><?php _e('Submit Feedback', 'wp-my-admin-bar');?></a></li>
 				</ul>
 			</div> <!-- end inside -->
 	</div> <!-- end postbox -->
@@ -26,7 +26,7 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 		<h3><span><?php _e('Show Some Love', 'wp-my-admin-bar');?>!</span></h3>
 			<div class="inside">
 				<ul>
-					<li><strong>&raquo; <a href=""><?php _e('Please Rate This Plugin', 'wp-my-admin-bar');?>!</a></strong></li>
+					<li><strong>&raquo; <a href="http://wordpress.org/extend/plugins/wp-my-admin-bar/" target="_blank"><?php _e('Please Rate This Plugin', 'wp-my-admin-bar');?>!</a></strong></li>
 					<li style="text-align:center;"><p><strong><?php _e('Thank You For Your Support', 'wp-my-admin-bar');?>!</strong></p>
 					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 						<input type="hidden" name="cmd" value="_s-xclick">
