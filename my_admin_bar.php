@@ -6,7 +6,7 @@ Description: The WP-MyAdminBar Plugin, replaces and expands the Wordpress Admini
 Tags: myadmin, myadminbar, adminbar, admin bar, admin, bar, my sites, mysites, tools, cache, multisite, webtools, web tools, technerdia
 Version: 0.1
 License: GPL
-Author: Chris Winters
+Author: tribalNerd
 Author URI: http://techNerdia.com/
 
 Created Feb 12, 2012
@@ -22,7 +22,7 @@ FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, please visit: http://www.gnu.org/licenses/gpl.html
 
-@author Chris Winters <tribalnerd@technerdia.com>
+@author tribalNerd (tribalnerd@technerdia.com)
 @copyright Copyright (c) 2012, Chris Winters
 @link http://technerdia.com/projects/adminbar/plugin.html
 @license http://www.gnu.org/licenses/gpl.html
