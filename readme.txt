@@ -7,11 +7,11 @@ Requires at least: 3.3
 Tested up to: 3.3.1
 Stable tag: 0.1.3
 
-The 'Wp My Admin Bar' Plugin is a Multisite Plugin, which recreates the default Wordpress Admin Bar, adding 3 new menus with quick access options.
+The 'Wp My Admin Bar' Plugin is a Multisite Plugin, which recreates the default Wordpress Admin Bar, adding 3 new quick access menus.
 
 == Description ==
 
-The 'Wp My Admin Bar' Plugin is a Multisite Plugin, which recreates the default Wordpress Admin Bar, adding 3 new menus with quick access options.
+The 'Wp My Admin Bar' Plugin is a Multisite Plugin, which recreates the default Wordpress Admin Bar, adding 3 new quick access menus.
 
 ### 3 New Menus:
 
