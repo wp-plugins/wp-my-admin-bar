@@ -5,7 +5,7 @@ Donate link: http://technerdia.com/projects/contribute.html
 Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
 Requires at least: 3.3
 Tested up to: 3.3.1
-Stable tag: 0.1.2
+Stable tag: 0.1.3
 
 The 'Wp My Admin Bar' Plugin is a Multisite Plugin, which recreates the default Wordpress Admin Bar, adding 3 new menus with quick access options.
 
@@ -142,6 +142,10 @@ The Option Data display shows you exactly what is being stored on your Wordpress
 
 == Changelog ==
 Alpha
+
+= 0.1.3 =
+* Screenshot correction, again.
+* Added release tag to main file.
 
 = 0.1.2 =
 * Added root Site Name display back to Admin Bar.
