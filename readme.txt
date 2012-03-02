@@ -169,4 +169,4 @@ No Upgrade Information At This Time
 [More Screen Shots](http://technerdia.com/projects/adminbar/screenshots.html) | 
 [Feedback](http://technerdia.com/feedback.html)
 
-1) screenshot-1.gif
+1. Collage of Wp My Admin Bar Features.
