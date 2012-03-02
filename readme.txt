@@ -21,14 +21,14 @@ Three new Menus are created:
 * My Tools: Web tools for WP Developers and Bloggers.
 
 [Feedback](http://technerdia.com/feedback.html) | 
-[Download It](http://wordpress.org/extend/plugins/wp-my-admin-bar/) | 
+[Download It](http://downloads.wordpress.org/plugin/wp-my-admin-bar.0.1.1.zip) | 
 [Plugin Home](http://technerdia.com/projects/adminbar/plugin.html)
 
 
 
 == Installation ==
 [View the Install Guide](http://technerdia.com/projects/adminbar/plugin.html) | 
-[Download Today](http://wordpress.org/extend/plugins/wp-my-admin-bar/) | 
+[Download Today](http://downloads.wordpress.org/plugin/wp-my-admin-bar.0.1.1.zip) | 
 [Feedback](http://technerdia.com/feedback.html)
 
 
@@ -60,7 +60,7 @@ By default the My Cache menu and options are hidden (turned off)
 
 == Frequently Asked Questions ==
 [F.A.Q.](http://technerdia.com/projects/adminbar/faq.html) | 
-[Download Today](http://wordpress.org/extend/plugins/wp-my-admin-bar/) | 
+[Download Today](http://downloads.wordpress.org/plugin/wp-my-admin-bar.0.1.1.zip) | 
 [Feedback](http://technerdia.com/feedback.html)
 
 Frequently Asked Questions:
@@ -83,7 +83,7 @@ Frequently Asked Questions:
 == Arbitrary section ==
 
 [View the Install Guide](http://technerdia.com/projects/adminbar/plugin.html) | 
-[Download Today](http://wordpress.org/extend/plugins/wp-my-admin-bar/) | 
+[Download Today](http://downloads.wordpress.org/plugin/wp-my-admin-bar.0.1.1.zip) | 
 [Feedback](http://technerdia.com/feedback.html)
 
 About The Settings:
@@ -142,7 +142,7 @@ No Upgrade Information At This Time
 
 == Screenshots ==
 [Screen Shots](http://technerdia.com/projects/adminbar/screenshots.html) | 
-[Download Today](http://wordpress.org/extend/plugins/wp-my-admin-bar/) | 
+[Download Today](http://downloads.wordpress.org/plugin/wp-my-admin-bar.0.1.1.zip) | 
 [Feedback](http://technerdia.com/feedback.html)
 
 1) My Sites, My Cache and My Tools Menu
