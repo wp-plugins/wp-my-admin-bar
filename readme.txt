@@ -272,6 +272,8 @@ Alpha Release
 
 
 == Screenshots ==
+[More Screenshots](http://technerdia.com/projects/adminbar/screenshots.html)
 
 1. Collage of Wp My Admin Bar Features.
-2. http://technerdia.com/projects/adminbar/screenshots.html
+
+http://technerdia.com/projects/adminbar/screenshots.html
