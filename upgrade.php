@@ -58,9 +58,9 @@ class UpgradeMyAdminBar {
 			$wp_myadminbar_option = unserialize( get_option('wp_myadminbar') );
 
 			$new_options_array = array(
-				'my_sites' => $wp_myadminbar_option['show_my_sites'],
-				'my_cache' => $wp_myadminbar_option['show_my_cache'],
-				'my_tools' => $wp_myadminbar_option['show_my_tools']
+				'my_sites' 	=> $wp_myadminbar_option['show_my_sites'],
+				'my_cache' 	=> $wp_myadminbar_option['show_my_cache'],
+				'my_tools' 	=> $wp_myadminbar_option['show_my_tools']
 			);
 	
 			delete_option( 'wp_myadminbar' );
@@ -75,11 +75,11 @@ class UpgradeMyAdminBar {
 
 			if ( $wp_mycache_option['toggle_dbcache'] || $wp_mycache_option['toggle_widget'] || $wp_mycache_option['toggle_minify'] || $wp_mycache_option['toggle_super'] || $wp_mycache_option['toggle_total'] ) {
 				$new_options_array = array(
-					'dbcache' => $wp_mycache_option['toggle_dbcache'],
-					'widget' => $wp_mycache_option['toggle_widget'],
-					'minify' => $wp_mycache_option['toggle_minify'],
-					'super' => $wp_mycache_option['toggle_super'],
-					'total' => $wp_mycache_option['toggle_total']
+					'dbcache' 	=> $wp_mycache_option['toggle_dbcache'],
+					'widget' 		=> $wp_mycache_option['toggle_widget'],
+					'minify' 		=> $wp_mycache_option['toggle_minify'],
+					'super' 		=> $wp_mycache_option['toggle_super'],
+					'total' 		=> $wp_mycache_option['toggle_total']
 				);
 	
 				delete_option( 'wp_mycache' );
