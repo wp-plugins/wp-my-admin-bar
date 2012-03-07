@@ -16,7 +16,7 @@ The Wp My Admin Bar Plugin is a Multisite Plugin, which expands on the default W
 
 The Plugin does not remove or disable the current Admin Bar. The menus are added to the current admin bar, which allows the built in Wordpress security features and Admin Bar features to function as you would expect.
 
-** Don't Forget To Rate The WP My Admin Bar Plugin, Thanks! ------------------>
+** Please Rate The WP My Admin Bar Plugin, Thanks! ------------------>
 
 ### 3 New Menus:
 
@@ -211,6 +211,7 @@ Alpha Release
 
 = 0.1.5 =
 * Files missing in repository.
+* Corrected deleted files.
 
 = 0.1.4 =
 * Added wp_nonce_field and check_admin_referer to setting pages & templates.
@@ -272,8 +273,8 @@ Alpha Release
 
 
 == Screenshots ==
-[More Screenshots](http://technerdia.com/projects/adminbar/screenshots.html)
+More Screenshots --> http://technerdia.com/projects/adminbar/screenshots.html
 
+
+- Ignore This - For Wordpress.org
 1. Collage of Wp My Admin Bar Features.
-
-http://technerdia.com/projects/adminbar/screenshots.html
