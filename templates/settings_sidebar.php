@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.2
+ * @version 0.1.4
  */
 if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 ?>
@@ -15,9 +15,10 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 		<h3><span><?php _e('The WP-MyAdminBar', 'wp-my-admin-bar');?></span></h3>
 			<div class="inside">
 				<ul>
-					<li>&bull; <a href="http://technerdia.com/projects/adminbar/plugin.html" target="_blank"><?php _e('Plugin Home Page', 'wp-my-admin-bar');?></a></li>
-					<li>&bull; <a href="http://wordpress.org/extend/plugins/wp-my-admin-bar/" target="_blank"><?php _e('Plugin at Wordpress.org', 'wp-my-admin-bar');?></a></li>
-					<li>&bull; <a href="http://technerdia.com/feedback.html" target="_blank"><?php _e('Submit Feedback', 'wp-my-admin-bar');?></a></li>
+					<li>&bull; <a href="http://technerdia.com/projects/adminbar/plugin.html" target="_blank"><?php _e('Plugin Home Page', 'wp-my-admin-bar');?></a> : Project Details</li>
+					<li>&bull; <a href="http://wordpress.org/extend/plugins/wp-my-admin-bar/" target="_blank"><?php _e('Plugin at Wordpress.org', 'wp-my-admin-bar');?></a> : WP-MyAdminBar</li>
+					<li>&bull; <a href="http://wordpress.org/tags/wp-my-admin-bar" target="_blank"><?php _e('Support Forum', 'wp-my-admin-bar');?></a> : Problems, Questions?</li>
+					<li>&bull; <a href="http://technerdia.com/feedback.html" target="_blank"><?php _e('Submit Feedback', 'wp-my-admin-bar');?></a> : I'm Listening!</li>
 				</ul>
 			</div> <!-- end inside -->
 	</div> <!-- end postbox -->
@@ -26,18 +27,19 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 		<h3><span><?php _e('Show Some Love', 'wp-my-admin-bar');?>!</span></h3>
 			<div class="inside">
 				<ul>
-					<li><strong>&raquo; <a href="http://wordpress.org/extend/plugins/wp-my-admin-bar/" target="_blank"><?php _e('Please Rate This Plugin', 'wp-my-admin-bar');?>!</a></strong></li>
-					<li style="text-align:center;"><p><strong><?php _e('Thank You For Your Support', 'wp-my-admin-bar');?>!</strong></p>
+					<li><strong>&raquo; <a href="http://wordpress.org/extend/plugins/wp-my-admin-bar/" target="_blank"><?php _e('Please Rate This Plugin', 'wp-my-admin-bar');?>!</a></strong><br />It only takes a few seconds to <a href="http://wordpress.org/extend/plugins/wp-my-admin-bar/" target="_blank">rate this plugin</a>! Your rating helps create motivation for future developments!</li>
+					<li style="text-align:center;"><br /><p><strong><?php _e('Thank You For Your Support', 'wp-my-admin-bar');?>!</strong></p>
 					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 						<input type="hidden" name="cmd" value="_s-xclick">
 						<input type="hidden" name="hosted_button_id" value="ZC85KWHZDA9DQ">
 						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate">
 						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-					</form></li>
+					</form>
+					<p><small>Donate To The Wp-MyToolBar Project Directly!</small></p></li>
 				</ul>
 			</div> <!-- end inside -->
 	</div> <!-- end postbox -->
-
+<?php if ( !isset( $_GET['tab'] ) || ( $_GET['tab'] == "menu_settings" ) ) {?>
 	<div class="postbox">
 		<h3><span><?php _e('Wordpress References', 'wp-my-admin-bar');?></span></h3>
 			<div class="inside">
@@ -58,10 +60,15 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 					<a href="http://codex.wordpress.org/Function_Reference/get_option" target="_blank">get_option</a>, 
 					<a href="http://codex.wordpress.org/Function_Reference/network_admin_url" target="_blank">network_admin_url</a>, 
 					<a href="http://codex.wordpress.org/Function_Reference/current_user_can_for_blog" target="_blank">current_user_can_for_blog</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/add_submenu_page" target="_blank">add_submenu_page</a>, 
 					<a href="http://codex.wordpress.org/Function_Reference" target="_blank">all functions</a>, 
+					<a href="http://codex.wordpress.org/Function_Reference/add_submenu_page" target="_blank">add_submenu_page</a>, 
 					<a href="http://codex.wordpress.org/Template_Tags" target="_blank">all template tags</a>, 
 					<a href="http://codex.wordpress.org/Option_Reference" target="_blank">option reference</a>, 
+					<a href="http://codex.wordpress.org/Function_Reference/wp_nonce_field" target="_blank">wp_nonce_field</a>, 
+					<a href="http://codex.wordpress.org/Function_Reference/check_admin_referer" target="_blank">check_admin_referer</a>, 
+					<a href="http://codex.wordpress.org/Function_Reference/is_admin" target="_blank">is_admin</a>, 
+					<a href="http://codex.wordpress.org/Function_Reference/is_user_logged_in" target="_blank">is_user_logged_in</a>, 
+					<a href="http://codex.wordpress.org/Function_Reference/is_super_admin" target="_blank">is_super_admin</a>, 
 					<a href="http://codex.wordpress.org/Database_Description#Table:_wp_options" target="_blank">database reference</a>.</li>
 				</ul>
 			</div> <!-- end inside -->
@@ -71,8 +78,9 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 		<h3><span><?php _e('Load Time', 'wp-my-admin-bar');?></span></h3>
 			<div class="inside">
 				<ul>
-					<li><?php _e('Page and Menus loaded in', 'wp-my-admin-bar');?> <em><?php timer_stop(1);?> <?php _e('seconds', 'wp-my-admin-bar');?></em>.</li>
+					<li><?php _e('Page and Menus loaded in', 'wp-my-admin-bar');?> <em><?php timer_stop( 1, 5 );?> <?php _e('seconds', 'wp-my-admin-bar');?></em>.</li>
 				</ul>
 			</div> <!-- end inside -->
 	</div> <!-- end postbox -->
+<?php }?>
 </div> <!-- end inner-sidebar -->

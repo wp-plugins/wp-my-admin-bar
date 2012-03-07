@@ -4,7 +4,7 @@ Plugin Name: WP My Admin Bar | WP-MyAdminBar
 Plugin URI: http://technerdia.com/projects/adminbar/plugin.html
 Description: The WP-MyAdminBar Plugin, replaces and expands the Wordpress Administration Bar, adding a new My Sites menu with extended options, a My Cache menu for quick cache access and My Tools for all WP Developers and Blogger needs.
 Tags: myadmin, myadminbar, adminbar, admin bar, admin, bar, my sites, mysites, tools, cache, multisite, webtools, web tools, technerdia
-Version: 0.1.3
+Version: 0.1.4
 License: GPL
 Author: tribalNerd
 Author URI: http://techNerdia.com/
@@ -26,12 +26,14 @@ this program; if not, please visit: http://www.gnu.org/licenses/gpl.html
 @copyright Copyright (c) 2012, Chris Winters
 @link http://technerdia.com/projects/adminbar/plugin.html
 @license http://www.gnu.org/licenses/gpl.html
-@version 0.1
+@version 0.1.4
 */
 
 if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 
-/* Define plugin textdomain for translations */
+/**
+ * Define Plugin textdomain for Translations - Run first
+ */
 function wp_my_admin_bar_init() {
 	$plugin_dir = basename( dirname(__FILE__) );
 		load_plugin_textdomain( 'wp-my-admin-bar', false, $plugin_dir );
@@ -39,7 +41,9 @@ function wp_my_admin_bar_init() {
 add_action('init', 'wp_my_admin_bar_init');
 
 
-/* Defined settings */
+/**
+ * Define Named Constants
+ */
 if ( !defined( 'MYAB_PLUGIN_BASENAME' ) ) {
 	define( 'MYAB_PLUGIN_BASENAME', plugin_basename( __FILE__ ) ); 				/* plugin-folder/plugin-file.php */
 }
@@ -61,54 +65,65 @@ if ( !defined( 'MYAB_TEMPLATES' ) ) {
 }
 
 
-/* Installs plugin on activation */
+/**
+ * Repeating Functions and Standalone Classes
+ */
+require_once MYAB_INCLUDES . '/function.class.php';
+
+
+/**
+ * Installs Plugin on Activation
+ */
 require_once MYAB_INCLUDES . '/activate.php';
 
 
-/* Site Settings Page */
-class settingsPage {
-	function __construct() {
-		add_action( 'plugins_loaded', array( $this, "include_settings" ) );
-	}
+/**
+ * Version Check, Set and Upgrade if Needed
+ * This needs to be at this spot, not above it.
+ */
+if ( !defined( 'WPMYAB_VERSION' ) ) {
+	define( 'WPMYAB_VERSION', "1.1.4" );
 
-	function include_settings() {
-		if ( current_user_can('manage_options') ) {
-			/* include - call class */
-			require_once MYAB_INCLUDES . '/settings_sites.class.php';
-			$wp_mysiteadmin = new MyAdminBar_Site_Admin();
-		}
-	}
-}
+	/* MyFunctions Class */
+	$option_data = new MyFunctions();
+	$wp_myadminbar_option = $option_data->option_wp_myadminbar();
 
-/* Display Settings Page */
-if ( strlen( strstr( $_SERVER['REQUEST_URI'], 'wp-admin' ) ) > 0 ) {
-	if ( !strlen( strstr( $_SERVER['REQUEST_URI'], 'network' ) ) > 0 ) {
-		$include_settings = new settingsPage();
+	/* Upgrade Class */
+	if ( $wp_myadminbar_option['show_my_sites'] || $wp_myadminbar_option['show_my_cache'] || $wp_myadminbar_option['show_my_tools'] ) {
+			require_once MYAB_PLUGIN_DIR . '/upgrade.php';
+		$wpadminbar_upgrade = new UpgradeMyAdminBar();
 	}
 }
 
 
-/* Network Settings */
-class networkPage {
-	function __construct() {
-		add_action( 'plugins_loaded', array( $this, "include_network" ) );
-	}
-	
-	function include_network() {
-		if ( current_user_can('manage_options') ) {
-			/* include - call class */
-			require_once MYAB_INCLUDES . '/settings_network.class.php';
-			$wp_mynetworkadmin = new MyAdminBar_Network_Admin();
-		}
-	}
+/**
+ * Display Settings Page if within Admin
+ */
+if ( is_admin() ) {
+	$include_settings = new settingsPage();
 }
 
-/* Display Network Settings Page if within Network */
-if ( strlen( strstr( $_SERVER['REQUEST_URI'], 'network' ) ) > 0 ) {
+
+/**
+ * Display Network Settings Page if within Network
+ */
+if ( is_network_admin() ) {
 	$include_network = new networkPage();
 }
 
 
-/* Menu Classes */
-require_once MYAB_INCLUDES . '/my_admin_bar.classes.php';
+/**
+ * My Menus - Always Run
+ */
+
+/**
+ * Display Settings - Logos, Howdy, etc
+ */
+$extra_settings = new displaySettings();
+
+/**
+ * WP My Admin Bar
+ */
+require_once MYAB_INCLUDES . '/my_admin_bar.class.php';
+$show_my_menus = new MyAdminBarMenus();
 ?>
