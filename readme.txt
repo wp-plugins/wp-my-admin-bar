@@ -209,6 +209,9 @@ Custom Settings Tab
 == Changelog ==
 Alpha Release
 
+= 0.1.5 =
+* Files missing in repository.
+
 = 0.1.4 =
 * Added wp_nonce_field and check_admin_referer to setting pages & templates.
 * Corrected Network Menu var that made the Network Dashboard link not appear.
