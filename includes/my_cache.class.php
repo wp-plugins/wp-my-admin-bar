@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.4
+ * @version 0.1.6
  */
 
 
@@ -75,6 +75,9 @@ class myCache {
  * Build The Menu
  */
 	function menuCache() {
+		if ( !is_user_logged_in() ) { return; }
+		if ( !is_super_admin() || !is_admin_bar_showing() ) { return; }
+
 		/* WP Icon */
 			$blue_wp_logo_url = includes_url('images/wpmini-blue.png');
 			$blavatar = '<img src="' . esc_url( $blue_wp_logo_url ) . '" alt="' . esc_attr__( 'Blavatar' ) . '" width="16" height="16" class="blavatar"/>';

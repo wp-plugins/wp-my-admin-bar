@@ -5,7 +5,7 @@ Donate link: http://technerdia.com/projects/contribute.html
 Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
 Requires at least: 3.3
 Tested up to: 3.3.1
-Stable tag: 0.1.4
+Stable tag: 0.1.6
 
 
 The 'Wp My Admin Bar' Plugin is a Multisite Plugin, which expands on the default Wordpress Admin Bar, adding 3 new quick access menus.
@@ -15,8 +15,6 @@ The 'Wp My Admin Bar' Plugin is a Multisite Plugin, which expands on the default
 The Wp My Admin Bar Plugin is a Multisite Plugin, which expands on the default Wordpress Admin Bar, adding 3 new quick access menus.
 
 The Plugin does not remove or disable the current Admin Bar. The menus are added to the current admin bar, which allows the built in Wordpress security features and Admin Bar features to function as you would expect.
-
-** Don't Forget To Rate The WP My Admin Bar Plugin, Thanks! ------------------>
 
 ### 3 New Menus:
 
@@ -33,8 +31,6 @@ Other Features Include: Being able to remove the Wordpress Logo from the Admin B
 * Standalone Installs (non-multisite)
 
 ### Download > Install > Network Activate / Site Activate > Settings (Network / perSite) > Admin Bar
-
-** Let Others Know This Plugin Works!!!!! ------------------>
 
 [Submit Feedback For Improvements](http://technerdia.com/feedback.html) | 
 [Screenshots](http://technerdia.com/projects/adminbar/screenshots.html) | 
@@ -65,8 +61,6 @@ Other Features Include: Being able to remove the Wordpress Logo from the Admin B
 	* Standalone Wordpress: Site Dashboard > Plugins Menu
 * Locate the WP My Admin Bar Plugin in your listing of plugins. (sort by Inactive)
 * Click the Activate link to start the plugin.
-
-** Don't Forget To Rate The WP My Admin Bar Plugin ------------------>
 
 
 ### To Configure:
@@ -158,8 +152,6 @@ A) First, the load time includes much more than just the menus or the settings p
 
 [Frequently Asked Questions](http://technerdia.com/projects/adminbar/faq.html)
 
-** Don't Forget To Rate The WP My Admin Bar Plugin ------------------>
-
 == Arbitrary section ==
 
 [View the Install Guide](http://technerdia.com/projects/adminbar/plugin.html) | 
@@ -208,6 +200,15 @@ Custom Settings Tab
 
 == Changelog ==
 Alpha Release
+
+= 0.1.6 =
+* Corrected menu link: My Sites > Visit This Site > View Posts - Now opens the proper edit.php page.
+* Corrected issue with admin bar menu options displaying to logged in users.
+* Removed ob_gzhandler
+
+= 0.1.5 =
+* Files missing in repository.
+* Corrected deleted files.
 
 = 0.1.4 =
 * Added wp_nonce_field and check_admin_referer to setting pages & templates.
@@ -270,5 +271,6 @@ Alpha Release
 
 == Screenshots ==
 
+- More Screenshots --> http://technerdia.com/projects/adminbar/screenshots.html
+
 1. Collage of Wp My Admin Bar Features.
-2. http://technerdia.com/projects/adminbar/screenshots.html

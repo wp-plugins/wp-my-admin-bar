@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.4
+ * @version 0.1.6
  */
 
 
@@ -22,6 +22,9 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
  */
 	function removeMySites() {
 		global $wp_admin_bar;
+			if ( !is_user_logged_in() ) { return; }
+			if ( !is_super_admin() || !is_admin_bar_showing() ) { return; }
+		
 			$wp_admin_bar->remove_menu('my-sites');	/* turn off default my-sites menu */
 			$wp_admin_bar->remove_menu('site-name');	/* turn off site-name menu */
 	}
@@ -145,6 +148,9 @@ class mySites {
  * Build The Menu
  */
 	function menuSites() {
+		if ( !is_user_logged_in() ) { return; }
+		if ( !is_super_admin() || !is_admin_bar_showing() ) { return; }
+
 		if ( function_exists('is_multisite') && is_multisite()) {
 			global $blog_id;
 
@@ -238,7 +244,7 @@ class mySites {
 							$this->menuSelect( "Add Media", get_admin_url( $site->blog_id, 'media-new.php' ), $site->blog_id );
 							$this->menuSelect( "Add Link", get_admin_url( $site->blog_id, 'link-add.php' ), $site->blog_id );
 							$this->menuSelect( "Posts and Pages", "", $site->blog_id );
-							$this->menuSelect( "View Posts", get_admin_url( $site->blog_id, 'post-new.php' ), $site->blog_id );
+							$this->menuSelect( "View Posts", get_admin_url( $site->blog_id, 'edit.php' ), $site->blog_id );
 							$this->menuSelect( "View Drafts", get_admin_url( $site->blog_id, 'edit.php?post_status=draft&post_type=post' ), $site->blog_id );
 							$this->menuSelect( "View Pages", get_admin_url( $site->blog_id, 'edit.php?post_type=page' ), $site->blog_id );
 							$this->menuSelect( "Administration", "", $site->blog_id );

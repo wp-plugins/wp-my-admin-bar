@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.4
+ * @version 0.1.6
  */
 if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 ?>
@@ -57,8 +57,6 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 							<ul>
 								<li style="overflow:hidden;"><strong><?php _e('Admin Bar Option', 'wp-my-admin-bar');?></strong>: <small><?php echo $myadminbar_option;?></small></li>
 								<li style="overflow:hidden;"><strong><?php _e('My Cache Option', 'wp-my-admin-bar');?></strong>: <small><?php echo $mycache_option;?></small></li>
-								<li><strong><?php _e('Output buffering', 'wp-my-admin-bar');?></strong>: <?php if ( ob_get_contents() ) { _e('In Use', 'wp-my-admin-bar'); }else{ _e('Empty', 'wp-my-admin-bar'); }?></li>
-								<li><strong><?php _e('Transient Cache', 'wp-my-admin-bar');?></strong>: <?php if ( get_site_transient( 'multisite_site_list' ) ) { _e('In Use', 'wp-my-admin-bar'); }else{ _e('Empty', 'wp-my-admin-bar'); } ?></li>
 							</ul>
 						</div> <!-- end inside -->
 				</div> <!-- end postbox -->
@@ -92,10 +90,6 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 				</div> <!-- end postbox -->
 
 <?php } /* end tab if */?>
-				<div  class="postbox"><div class="inside">
-					<p><?php _e('Disabling this plugin does not modify the above settings. Deleting this plugin, through Wordpress, deletes the settings above.', 'wp-my-admin-bar');?></p>
-				</div></div> <!-- end inside and postbox -->
-
 		</div> <!-- end post-body-content -->
 		</div> <!-- end post-body -->
 

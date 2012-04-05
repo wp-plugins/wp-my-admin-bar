@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.4
+ * @version 0.1.6
  */
 if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 ?>
@@ -39,48 +39,14 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 				</ul>
 			</div> <!-- end inside -->
 	</div> <!-- end postbox -->
-<?php if ( !isset( $_GET['tab'] ) || ( $_GET['tab'] == "menu_settings" ) ) {?>
+
 	<div class="postbox">
-		<h3><span><?php _e('Wordpress References', 'wp-my-admin-bar');?></span></h3>
+		<h3><span><?php _e('Notice', 'wp-my-admin-bar');?></span></h3>
 			<div class="inside">
 				<ul>
-					<li><a href="http://codex.wordpress.org/Function_Reference/register_activation_hook" target="_blank">register_activation_hook</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/get_bloginfo" target="_blank">get_bloginfo</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/register_deactivation_hook" target="_blank">register_deactivation_hook</a>, 
-					<a href="http://codex.wordpress.org/Class_Reference/wpdb" target="_blank">wpdb</a>, 
-					<a href="http://codex.wordpress.org/I18n_for_WordPress_Developers" target="_blank">I18n</a>, 
-					<a href="http://codex.wordpress.org/WPMU_Functions/switch_to_blog" target="_blank">switch_to_blog</a>, 
-					<a href="http://codex.wordpress.org/WPMU_Functions/restore_current_blog" target="_blank">restore_current_blog</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/get_site_transient" target="_blank">get_site_transient</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/delete_site_transient" target="_blank">delete_site_transient</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/set_site_transient" target="_blank">set_site_transient</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/add_action" target="_blank">add_action</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/delete_option" target="_blank">delete_option</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/add_option" target="_blank">add_option</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/get_option" target="_blank">get_option</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/network_admin_url" target="_blank">network_admin_url</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/current_user_can_for_blog" target="_blank">current_user_can_for_blog</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference" target="_blank">all functions</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/add_submenu_page" target="_blank">add_submenu_page</a>, 
-					<a href="http://codex.wordpress.org/Template_Tags" target="_blank">all template tags</a>, 
-					<a href="http://codex.wordpress.org/Option_Reference" target="_blank">option reference</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/wp_nonce_field" target="_blank">wp_nonce_field</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/check_admin_referer" target="_blank">check_admin_referer</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/is_admin" target="_blank">is_admin</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/is_user_logged_in" target="_blank">is_user_logged_in</a>, 
-					<a href="http://codex.wordpress.org/Function_Reference/is_super_admin" target="_blank">is_super_admin</a>, 
-					<a href="http://codex.wordpress.org/Database_Description#Table:_wp_options" target="_blank">database reference</a>.</li>
+					<li><?php _e('Disabling this plugin does delete the plugin settings. Deleting this plugin, through Wordpress, deletes all plugin related settings.', 'wp-my-admin-bar');?></li>
 				</ul>
 			</div> <!-- end inside -->
 	</div> <!-- end postbox -->
 
-	<div class="postbox">
-		<h3><span><?php _e('Load Time', 'wp-my-admin-bar');?></span></h3>
-			<div class="inside">
-				<ul>
-					<li><?php _e('Page and Menus loaded in', 'wp-my-admin-bar');?> <em><?php timer_stop( 1, 5 );?> <?php _e('seconds', 'wp-my-admin-bar');?></em>.</li>
-				</ul>
-			</div> <!-- end inside -->
-	</div> <!-- end postbox -->
-<?php }?>
 </div> <!-- end inner-sidebar -->

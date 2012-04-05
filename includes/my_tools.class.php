@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.4
+ * @version 0.1.6
  */
 
 
@@ -82,6 +82,9 @@ class myTools {
  * Build The Menu
  */
 	function menuTools() {
+		if ( !is_user_logged_in() ) { return; }
+		if ( !is_super_admin() || !is_admin_bar_showing() ) { return; }
+
 		global $wp_admin_bar;
 
 		$tool_type_list = array(

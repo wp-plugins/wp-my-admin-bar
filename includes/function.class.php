@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.4
+ * @version 0.1.6
  */
 
 
@@ -14,6 +14,7 @@
 /**
  * ==================================== Repeating Functions and Standalone Classes
  */
+
 
 /**
  * Repeating Functions
@@ -122,9 +123,10 @@ class displaySettings {
 	
 	/* Custom Settings Tab */
 	function custom_settings() {
-		global $wp_admin_bar;
-	
 		if ( !is_user_logged_in() ) { return; }
+		if ( !is_super_admin() || !is_admin_bar_showing() ) { return; }
+
+		global $wp_admin_bar;
 
 			/* MyFunctions Class */
 				$my_functions_class = new MyFunctions();
