@@ -8,6 +8,7 @@
  * @license http://www.gnu.org/licenses/gpl.html
  * @version 0.1.4
  */
+
 if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 if ( false === ( function_exists('is_multisite') && is_multisite() ) ) { $not_multisite = "readonly"; }
 ?>

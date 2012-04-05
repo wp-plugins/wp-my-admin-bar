@@ -32,6 +32,7 @@ Other Features Include: Being able to remove the Wordpress Logo from the Admin B
 * Multisite - Site Activated
 * Standalone Installs (non-multisite)
 
+
 ### Download > Install > Network Activate / Site Activate > Settings (Network / perSite) > Admin Bar
 
 ** Let Others Know This Plugin Works!!!!! ------------------>
