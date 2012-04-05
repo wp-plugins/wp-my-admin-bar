@@ -6,10 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.4
  */
-
-
 
 /**
  * ==================================== Creates New My Sites Admin Menu
