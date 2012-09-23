@@ -1,5 +1,5 @@
 === Wp My Admin Bar ===
-Plugin Name: WP My Admin Bar | Wp My Admin Bar
+Plugin Name: WP My Admin Bar | Admin Bar
 Contributors: tribalNerd, Chris Winters
 Donate link: http://technerdia.com/projects/contribute.html
 Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
