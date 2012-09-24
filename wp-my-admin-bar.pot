@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-my-admin-bar\n"
-"POT-Creation-Date: 2012-03-07 16:48:29+00:00\n"
+"POT-Creation-Date: 2012-09-24 02:25:07+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,23 +19,23 @@ msgid ""
 "button to return to the previous page."
 msgstr ""
 
-#: includes/activate.php:106 includes/activate.php:108
+#: includes/activate.php:115 includes/activate.php:117
 msgid "Settings"
 msgstr ""
 
-#: includes/activate.php:110
+#: includes/activate.php:119
 msgid "F.A.Q."
 msgstr ""
 
-#: includes/activate.php:111
+#: includes/activate.php:120
 msgid "Support"
 msgstr ""
 
-#: includes/activate.php:112
+#: includes/activate.php:121
 msgid "Feedback"
 msgstr ""
 
-#: includes/activate.php:113
+#: includes/activate.php:122
 msgid "Donations"
 msgstr ""
 
@@ -43,40 +43,40 @@ msgstr ""
 msgid "My Cache"
 msgstr ""
 
-#: includes/my_cache.class.php:80 includes/my_sites.class.php:191
+#: includes/my_cache.class.php:87 includes/my_sites.class.php:207
 msgid "Blavatar"
 msgstr ""
 
-#: includes/my_sites.class.php:79
+#: includes/my_sites.class.php:86
 msgid "My Network Admin"
 msgstr ""
 
-#: includes/my_sites.class.php:93
+#: includes/my_sites.class.php:100
 msgid "Visit This Website"
 msgstr ""
 
-#: includes/settings_network.class.php:143
+#: includes/settings_network.class.php:151
 msgid ""
 "Network Wide Settings Saved. If the admin bar did not visually change, you "
 "may need to"
 msgstr ""
 
-#: includes/settings_network.class.php:143
+#: includes/settings_network.class.php:151
 #: includes/settings_sites.class.php:59 includes/settings_sites.class.php:85
 msgid "refresh this page"
 msgstr ""
 
-#: includes/settings_network.class.php:170
+#: includes/settings_network.class.php:186
 #: includes/settings_sites.class.php:138
 msgid "The WP-MyAdminBar Option Value is Blank."
 msgstr ""
 
-#: includes/settings_network.class.php:180
+#: includes/settings_network.class.php:196
 #: includes/settings_sites.class.php:148
 msgid "The My Cache Menu Option Value is Blank."
 msgstr ""
 
-#: includes/settings_network.class.php:217
+#: includes/settings_network.class.php:233
 #: includes/settings_sites.class.php:189
 msgid "The Custom Settings Option Value is Blank."
 msgstr ""
@@ -137,15 +137,15 @@ msgstr ""
 #: templates/settings_network.php:33 templates/settings_network.php:40
 #: templates/settings_network.php:43 templates/settings_network.php:44
 #: templates/settings_network.php:45 templates/settings_network.php:46
-#: templates/settings_network.php:47 templates/settings_network.php:75
-#: templates/settings_network.php:76 templates/settings_network.php:77
-#: templates/settings_network.php:78 templates/settings_sites.php:32
+#: templates/settings_network.php:47 templates/settings_network.php:73
+#: templates/settings_network.php:74 templates/settings_network.php:75
+#: templates/settings_network.php:76 templates/settings_sites.php:32
 #: templates/settings_sites.php:33 templates/settings_sites.php:34
 #: templates/settings_sites.php:41 templates/settings_sites.php:44
 #: templates/settings_sites.php:45 templates/settings_sites.php:46
 #: templates/settings_sites.php:47 templates/settings_sites.php:48
-#: templates/settings_sites.php:76 templates/settings_sites.php:77
-#: templates/settings_sites.php:79 templates/settings_sites.php:80
+#: templates/settings_sites.php:74 templates/settings_sites.php:75
+#: templates/settings_sites.php:77 templates/settings_sites.php:78
 msgid "show"
 msgstr ""
 
@@ -153,14 +153,14 @@ msgstr ""
 #: templates/settings_network.php:33 templates/settings_network.php:43
 #: templates/settings_network.php:44 templates/settings_network.php:45
 #: templates/settings_network.php:46 templates/settings_network.php:47
+#: templates/settings_network.php:73 templates/settings_network.php:74
 #: templates/settings_network.php:75 templates/settings_network.php:76
-#: templates/settings_network.php:77 templates/settings_network.php:78
 #: templates/settings_sites.php:32 templates/settings_sites.php:33
 #: templates/settings_sites.php:34 templates/settings_sites.php:44
 #: templates/settings_sites.php:45 templates/settings_sites.php:46
 #: templates/settings_sites.php:47 templates/settings_sites.php:48
-#: templates/settings_sites.php:76 templates/settings_sites.php:77
-#: templates/settings_sites.php:79 templates/settings_sites.php:80
+#: templates/settings_sites.php:74 templates/settings_sites.php:75
+#: templates/settings_sites.php:77 templates/settings_sites.php:78
 msgid "hide"
 msgstr ""
 
@@ -173,8 +173,8 @@ msgid "Display My Tools Menu"
 msgstr ""
 
 #: templates/settings_network.php:34 templates/settings_network.php:48
-#: templates/settings_network.php:79 templates/settings_sites.php:35
-#: templates/settings_sites.php:49 templates/settings_sites.php:81
+#: templates/settings_network.php:77 templates/settings_sites.php:35
+#: templates/settings_sites.php:49 templates/settings_sites.php:79
 msgid "Save"
 msgstr ""
 
@@ -220,8 +220,8 @@ msgstr ""
 msgid "Total Cache"
 msgstr ""
 
-#: templates/settings_network.php:54 templates/settings_network.php:85
-#: templates/settings_sites.php:55 templates/settings_sites.php:87
+#: templates/settings_network.php:54 templates/settings_network.php:83
+#: templates/settings_sites.php:55 templates/settings_sites.php:85
 msgid "Option Data"
 msgstr ""
 
@@ -240,63 +240,39 @@ msgstr ""
 msgid "My Cache Option"
 msgstr ""
 
-#: templates/settings_network.php:60 templates/settings_sites.php:61
-msgid "Output buffering"
-msgstr ""
-
-#: templates/settings_network.php:60 templates/settings_network.php:61
-#: templates/settings_sites.php:61 templates/settings_sites.php:62
-msgid "In Use"
-msgstr ""
-
-#: templates/settings_network.php:60 templates/settings_network.php:61
-#: templates/settings_sites.php:61 templates/settings_sites.php:62
-msgid "Empty"
-msgstr ""
-
-#: templates/settings_network.php:61 templates/settings_sites.php:62
-msgid "Transient Cache"
-msgstr ""
-
-#: templates/settings_network.php:69 templates/settings_sites.php:71
+#: templates/settings_network.php:67 templates/settings_sites.php:69
 msgid "Custom Settings"
 msgstr ""
 
-#: templates/settings_network.php:71
+#: templates/settings_network.php:69
 msgid "Network Only Settings"
 msgstr ""
 
-#: templates/settings_network.php:75 templates/settings_sites.php:76
+#: templates/settings_network.php:73 templates/settings_sites.php:74
 msgid "Display Wordpress Logo on Admin Bar"
 msgstr ""
 
-#: templates/settings_network.php:76 templates/settings_sites.php:77
+#: templates/settings_network.php:74 templates/settings_sites.php:75
 msgid "Display Howdy, Handle on Admin Bar"
 msgstr ""
 
-#: templates/settings_network.php:77 templates/settings_sites.php:79
+#: templates/settings_network.php:75 templates/settings_sites.php:77
 msgid "Display WP Icon in My Sites/Cache Menu"
 msgstr ""
 
-#: templates/settings_network.php:78 templates/settings_sites.php:80
+#: templates/settings_network.php:76 templates/settings_sites.php:78
 msgid "Display Site IDs in My Sites Menu"
 msgstr ""
 
-#: templates/settings_network.php:87 templates/settings_sites.php:89
+#: templates/settings_network.php:85 templates/settings_sites.php:87
 msgid "Below is the Option Value for the Custom Settings Option."
 msgstr ""
 
-#: templates/settings_network.php:89 templates/settings_sites.php:91
+#: templates/settings_network.php:87 templates/settings_sites.php:89
 msgid "Option Value"
 msgstr ""
 
-#: templates/settings_network.php:96 templates/settings_sites.php:99
-msgid ""
-"Disabling this plugin does not modify the above settings. Deleting this "
-"plugin, through Wordpress, deletes the settings above."
-msgstr ""
-
-#: templates/settings_network.php:108 templates/settings_sites.php:111
+#: templates/settings_network.php:102 templates/settings_sites.php:105
 msgid "Created by"
 msgstr ""
 
@@ -333,19 +309,13 @@ msgid "Thank You For Your Support"
 msgstr ""
 
 #: templates/settings_sidebar.php:44
-msgid "Wordpress References"
+msgid "Notice"
 msgstr ""
 
-#: templates/settings_sidebar.php:78
-msgid "Load Time"
-msgstr ""
-
-#: templates/settings_sidebar.php:81
-msgid "Page and Menus loaded in"
-msgstr ""
-
-#: templates/settings_sidebar.php:81
-msgid "seconds"
+#: templates/settings_sidebar.php:47
+msgid ""
+"Disabling this plugin does delete the plugin settings. Deleting this plugin, "
+"through Wordpress, deletes all plugin related settings."
 msgstr ""
 
 #: templates/settings_sites.php:15
