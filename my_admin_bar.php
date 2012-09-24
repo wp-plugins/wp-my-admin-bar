@@ -1,10 +1,10 @@
 <?php
 /**
-Plugin Name: WP My Admin Bar | WP-MyAdminBar
+Plugin Name: WP My Admin Bar | Admin Bar
 Plugin URI: http://technerdia.com/projects/adminbar/plugin.html
 Description: The WP-MyAdminBar Plugin, replaces and expands the Wordpress Administration Bar, adding a new My Sites menu with extended options, a My Cache menu for quick cache access and My Tools for all WP Developers and Blogger needs.
 Tags: myadmin, myadminbar, adminbar, admin bar, admin, bar, my sites, mysites, tools, cache, multisite, webtools, web tools, technerdia
-Version: 0.1.6
+Version: 0.1.7
 License: GPL
 Author: tribalNerd
 Author URI: http://techNerdia.com/
@@ -23,10 +23,10 @@ You should have received a copy of the GNU General Public License along with
 this program; if not, please visit: http://www.gnu.org/licenses/gpl.html
 
 @author tribalNerd (tribalnerd@technerdia.com)
-@copyright Copyright (c) 2012, Chris Winters
+@copyright Copyright (c) 2012 techNerdia LLC.
 @link http://technerdia.com/projects/adminbar/plugin.html
 @license http://www.gnu.org/licenses/gpl.html
-@version 0.1.6
+@version 0.1.7
 */
 
 if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
@@ -87,12 +87,6 @@ if ( !defined( 'WPMYAB_VERSION' ) ) {
 	/* MyFunctions Class */
 	$option_data = new MyFunctions();
 	$wp_myadminbar_option = $option_data->option_wp_myadminbar();
-
-	/* Upgrade Class */
-	if ( $wp_myadminbar_option['show_my_sites'] || $wp_myadminbar_option['show_my_cache'] || $wp_myadminbar_option['show_my_tools'] ) {
-			require_once MYAB_PLUGIN_DIR . '/upgrade.php';
-		$wpadminbar_upgrade = new UpgradeMyAdminBar();
-	}
 }
 
 

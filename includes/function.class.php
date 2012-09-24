@@ -3,13 +3,11 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012, Chris Winters
+ * @copyright Copyright (c) 2012 techNerdia LLC.
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.6
+ * @version 0.1.7
  */
-
-
 
 /**
  * ==================================== Repeating Functions and Standalone Classes
@@ -20,6 +18,20 @@
  * Repeating Functions
  */
 class MyFunctions {
+
+/** =================================================================== My Sites Menu == */
+
+/* wp_myadminbar_nw option for Network added for version 0.1.7 */
+	public function option_wp_myadminbar_nw() {
+			$get_wp_myadminbar = unserialize( get_option('wp_myadminbar_nw') );
+		return $get_wp_myadminbar;
+	}
+/* Added for version 0.1.7 */
+	public function wp_myadminbar_nw_status() {
+			$get_myadminbar_status = get_option('wp_myadminbar_nw');
+		return $get_myadminbar_status;
+	}
+
 /* wp_myadminbar option */
 	public function option_wp_myadminbar() {
 			$get_wp_myadminbar = unserialize( get_option('wp_myadminbar') );
@@ -29,6 +41,19 @@ class MyFunctions {
 	public function wp_myadminbar_status() {
 			$get_myadminbar_status = get_option('wp_myadminbar');
 		return $get_myadminbar_status;
+	}
+
+/** =================================================================== My Cache Menu == */
+
+/* wp_mycache_nw option for Network added for version 0.1.7 */
+	public function option_wp_mycache_nw() {
+			$get_wp_mycache = unserialize( get_option('wp_mycache_nw') );
+		return $get_wp_mycache;
+	}
+/* Added for version 0.1.7 */
+	public function wp_mycache_nw_status() {
+			$get_mycache_status = get_option('wp_mycache_nw');
+		return $get_mycache_status;
 	}
 
 /* wp_mycache option */
@@ -41,6 +66,8 @@ class MyFunctions {
 			$get_mycache_status = get_option('wp_mycache');
 		return $get_mycache_status;
 	}
+
+/** =================================================================== My Tools Menu == */
 
 /* wp_mycustom option */
 	public function option_wp_mycustom() {
@@ -83,7 +110,7 @@ class networkPage {
 	}
 	
 	function include_network() {
-		if ( !is_user_logged_in() ) { return; }														/* Logged in users only */
+		if ( !is_user_logged_in() ) { return; }																		/* Logged in users only */
 	
 		if ( current_user_can('manage_options') && is_user_member_of_blog() && is_super_admin() ) {	/* Proper users only */
 			/* include - call class */
@@ -105,7 +132,10 @@ class settingsPage {
 	function include_settings() {
 		if ( !is_user_logged_in() ) { return; } /* Logged in users only */
 
+	/** Modified for version 0.1.7	
 		if ( current_user_can('manage_options') && is_user_member_of_blog() && is_super_admin() ) {
+	 */
+		if ( current_user_can('manage_options') && is_user_member_of_blog() ) {
 			require_once MYAB_INCLUDES . '/settings_sites.class.php'; /* include - call class */
 				$wp_mysiteadmin = new MyAdminBar_Site_Admin();
 		}
@@ -123,8 +153,12 @@ class displaySettings {
 	
 	/* Custom Settings Tab */
 	function custom_settings() {
+	/** Modified for version 0.1.7
 		if ( !is_user_logged_in() ) { return; }
 		if ( !is_super_admin() || !is_admin_bar_showing() ) { return; }
+	*/
+		if ( !is_user_logged_in() && !is_admin_bar_showing() ) { return; }
+		if ( !current_user_can('manage_options') && !is_user_member_of_blog() ) { return; }
 
 		global $wp_admin_bar;
 
@@ -136,8 +170,8 @@ class displaySettings {
 				$get_custom_option = $my_functions_class->option_wp_mycustom();
 			}
 			
-			if ( $get_custom_option['wplogo'] == "hide" ) { $wp_admin_bar->remove_menu('wp-logo'); }
-			if ( $get_custom_option['howdy'] == "hide" ) { $wp_admin_bar->remove_menu('my-account'); }
+			if ( isset ( $get_custom_option['wplogo'] ) && $get_custom_option['wplogo'] == "hide" ) { $wp_admin_bar->remove_menu('wp-logo'); }
+			if ( isset ( $get_custom_option['howdy'] ) && $get_custom_option['howdy'] == "hide" ) { $wp_admin_bar->remove_menu('my-account'); }
 
 	} /* end custom_settings() */
 }

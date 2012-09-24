@@ -3,10 +3,10 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012, Chris Winters
+ * @copyright Copyright (c) 2012 techNerdia LLC.
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.6
+ * @version 0.1.7
  */
 
 
@@ -22,11 +22,15 @@ class myTools {
  * Create the Link
  */
 	function myTools() {
+	/** Modified for version 0.1.7
 		if ( ! is_user_logged_in() )
 			return;
 
 		if ( !is_user_member_of_blog() && !is_super_admin() )
 			return;
+	*/
+			if ( !is_user_logged_in() && !is_admin_bar_showing() ) { return; }
+			if ( !current_user_can('manage_options') && !is_user_member_of_blog() ) { return; }
 
 		add_action( 'admin_bar_menu', array( $this, "menuTools" ),22 );
 	}
@@ -74,7 +78,7 @@ class myTools {
 			'title' 	=> '&bull; '. __($name, 'wp-my-admin-bar') .' &raquo;',
 			'href' 	=> $link,
 			'parent' 	=> $root_menu,
-			'meta' 	=> array( target => '_blank' ) )
+			'meta' 	=> array( 'target' => '_blank' ) )
 		);
 	}
 
@@ -82,8 +86,12 @@ class myTools {
  * Build The Menu
  */
 	function menuTools() {
-		if ( !is_user_logged_in() ) { return; }
-		if ( !is_super_admin() || !is_admin_bar_showing() ) { return; }
+		/** Modified for version 0.1.7
+			if ( !is_user_logged_in() ) { return; }
+			if ( !is_super_admin() || !is_admin_bar_showing() ) { return; }
+		*/
+			if ( !is_user_logged_in() && !is_admin_bar_showing() ) { return; }
+			if ( !current_user_can('manage_options') && !is_user_member_of_blog() ) { return; }
 
 		global $wp_admin_bar;
 

@@ -3,10 +3,10 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012, Chris Winters
+ * @copyright Copyright (c) 2012 techNerdia LLC.
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.6
+ * @version 0.1.7
  */
 
 
@@ -22,9 +22,13 @@ if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
  */
 	function removeMySites() {
 		global $wp_admin_bar;
+		/** Modified for version 0.1.7
 			if ( !is_user_logged_in() ) { return; }
 			if ( !is_super_admin() || !is_admin_bar_showing() ) { return; }
-		
+		*/
+			if ( !is_user_logged_in() && !is_admin_bar_showing() ) { return; }
+			if ( !current_user_can('manage_options') && !is_user_member_of_blog() ) { return; }
+
 			$wp_admin_bar->remove_menu('my-sites');	/* turn off default my-sites menu */
 			$wp_admin_bar->remove_menu('site-name');	/* turn off site-name menu */
 	}
@@ -97,7 +101,7 @@ class mySites {
 			'href' 	=> $href,
 			'id' 	=> $id,
 			'parent' 	=> $root_menu,
-			'meta' 	=> array( target => '_blank' ) )
+			'meta' 	=> array( 'target' => '_blank' ) )
 		);
 	}
 /**
@@ -148,8 +152,12 @@ class mySites {
  * Build The Menu
  */
 	function menuSites() {
+	/** Modified for version 0.1.7
 		if ( !is_user_logged_in() ) { return; }
 		if ( !is_super_admin() || !is_admin_bar_showing() ) { return; }
+	*/
+		if ( !is_user_logged_in() && !is_admin_bar_showing() ) { return; }
+		if ( !current_user_can('manage_options') && !is_user_member_of_blog() ) { return; }
 
 		if ( function_exists('is_multisite') && is_multisite()) {
 			global $blog_id;
@@ -157,7 +165,8 @@ class mySites {
 			/* My Sites Menu */
 			$this->menuTitle( "My Sites", "menutitle" );
 			/* Network Menu */
-			$this->networkAdmin( network_admin_url(), "networkmenu", "menutitle" );
+			if ( is_super_admin() ) { /* Added for Version 0.1.7 */
+				$this->networkAdmin( network_admin_url(), "networkmenu", "menutitle" );
 				$this->menuSelect( "Dashboard", network_admin_url(), "networkmenu" );
 				$this->menuSelect( "Network Home", network_home_url( 'wp-admin/' ), "networkmenu" );
 				$this->menuSelect( "Edit This Site", network_admin_url( "site-info.php?id=$blog_id" ), "networkmenu" );
@@ -167,6 +176,7 @@ class mySites {
 				$this->menuSelect( "Plugins Admin", network_admin_url( 'plugins.php' ), "networkmenu" );
 				$this->menuSelect( "Settings Admin", network_admin_url( 'settings.php' ), "networkmenu" );
 				$this->menuSelect( "Log Out", get_home_url( $blog_id, '/wp-login.php?action=logout' ), "networkmenu" );
+			}
 
 			/* Visit This Website Menu */
 			if ( !is_network_admin() ) {
@@ -200,15 +210,19 @@ class mySites {
 				$my_functions_class = new MyFunctions();
 				$check_custom_option = $my_functions_class->option_wp_mycustom();	/* get option values */
 				$custom_option = $my_functions_class->wp_mycustom_status();			/* check if option */
-				$site_list = $my_functions_class->get_my_site_list();				/* db query or transient */
+				$site_list = $my_functions_class->get_my_site_list();					/* db query or transient */
 
 			/* Build Each Sites Menu */
 			foreach ( $site_list as $site ) {
 				switch_to_blog( $site->blog_id );
+
+				/** Modified for version 0.1.7
 					$siteUrl = site_url();
 					$website = parse_url( $siteUrl );
 					$website = $website['host'];
 					$website = ucfirst( $website );
+				*/
+					$website = get_bloginfo('name');
 
 						if ( $check_custom_option['wpicon'] == "hide" && $check_custom_option['siteids'] == "hide" ) {
 							$new_site_name = $website;
@@ -234,10 +248,10 @@ class mySites {
 						}			
 
 					/* Website Menus */
-					$this->menuOption( $new_site_name, $site->blog_id, "menutitle" );
-					$this->menuSelect( "Dashboard", get_admin_url( $site->blog_id ), $site->blog_id );
-					$this->menuSelect( "Visit Site", get_home_url( $site->blog_id, '/' ), $site->blog_id );
-						if ( current_user_can_for_blog( $site->blog_id, 'edit_posts' ) ) {
+						if ( current_user_can_for_blog( $site->blog_id, 'edit_posts' ) ) { /* Moved for Version 0.1.7 */
+							$this->menuOption( $new_site_name, $site->blog_id, "menutitle" );
+							$this->menuSelect( "Dashboard", get_admin_url( $site->blog_id ), $site->blog_id );
+							$this->menuSelect( "Visit Site", get_home_url( $site->blog_id, '/' ), $site->blog_id );
 							$this->menuSelect( "Add Content", "", $site->blog_id );
 							$this->menuSelect( "Add Post", get_admin_url( $site->blog_id, 'post-new.php' ), $site->blog_id );
 							$this->menuSelect( "Add Page", get_admin_url( $site->blog_id, 'post-new.php?post_type=page' ), $site->blog_id );
@@ -257,10 +271,6 @@ class mySites {
 			} /* end foreach */
 
 		}else{ /* Not Multisite */
-			$siteUrl = site_url();
-			$website = parse_url( $siteUrl );
-			$website = $website['host'];
-			$website = ucfirst( $website );
 			/* My Sites Menu */
 			$this->menuTitle( "My Site", "menutitle" );
 				if ( function_exists('is_multisite') && is_multisite() ) {

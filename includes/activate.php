@@ -3,10 +3,10 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012, Chris Winters
+ * @copyright Copyright (c) 2012 techNerdia LLC.
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.4
+ * @version 0.1.7
  */
 
 
@@ -48,7 +48,7 @@ function wp_myadminbar_activate() {
 		if ( isset( $_GET['networkwide'] ) && ( $_GET['networkwide'] == 1 ) ) {
 		global $wpdb;
 
-	        $org_blog_id = $wpdb->blogid;
+	      $org_blog_id = $wpdb->blogid;
 			$network_blog_id = $wpdb->get_col( $wpdb->prepare( "SELECT blog_id FROM $wpdb->blogs" ) );
 
 			foreach ( $network_blog_id as $current_blog_id ) {
@@ -57,8 +57,17 @@ function wp_myadminbar_activate() {
 			}
 
 			switch_to_blog( $org_blog_id );
+
+			$options_array = array(
+				'my_sites' 	=> 'show',
+				'my_cache' 	=> 'hide',
+				'my_tools' 	=> 'show'
+			);
+	
+			add_option( "wp_myadminbar_nw", serialize( $options_array ), 'no' ); /** Added for Version 0.1.7 */
+
 			return;
-		}	
+		}
 	}
 
 /* Install This Website */

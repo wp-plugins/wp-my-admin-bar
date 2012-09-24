@@ -3,10 +3,10 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012, Chris Winters
+ * @copyright Copyright (c) 2012 techNerdia LLC.
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.4
+ * @version 0.1.7
  */
 
 
@@ -40,7 +40,7 @@ class MyAdminBar_Site_Admin {
 /**
  * Build wp_myadminbar Option based on posted information
  */
-		if ( $_POST['save_my_menus'] && check_admin_referer( 'my_option_action', 'my_option_nonce' ) ) {
+		if ( isset ( $_POST['save_my_menus'] ) && check_admin_referer( 'my_option_action', 'my_option_nonce' ) ) {
 			if ( $_POST['my_sites'] == "show" || $_POST['my_sites'] == "hide" ) { $my_sites_post = $_POST['my_sites']; }
 			if ( $_POST['my_cache'] == "show" || $_POST['my_cache'] == "hide" ) { $my_cache_post = $_POST['my_cache']; }
 			if ( $_POST['my_tools'] == "show" || $_POST['my_tools'] == "hide" ) { $my_tools_post = $_POST['my_tools']; }
@@ -62,7 +62,7 @@ class MyAdminBar_Site_Admin {
 /**
  * Build wp_mycache Option based on posted information
  */
-		if ( $_POST['save_my_cache'] && check_admin_referer( 'my_cache_action', 'my_cache_nonce' ) ) {
+		if ( isset ( $_POST['save_my_cache'] ) && check_admin_referer( 'my_cache_action', 'my_cache_nonce' ) ) {
 			if ( $_POST['dbcache'] == "show" || $_POST['dbcache'] == "hide" ) { $dbcache_post = $_POST['dbcache']; }
 			if ( $_POST['widget'] == "show" || $_POST['widget'] == "hide" ) { $widget_post = $_POST['widget']; }
 			if ( $_POST['minify'] == "show" || $_POST['minify'] == "hide" ) { $minify_post = $_POST['minify']; }
@@ -70,11 +70,11 @@ class MyAdminBar_Site_Admin {
 			if ( $_POST['total'] == "show" || $_POST['total'] == "hide" ) { $total_post = $_POST['total']; }
 	
 			$options_array = array(
-				'dbcache' => $dbcache_post,
-				'widget' => $widget_post,
-				'minify' => $minify_post,
-				'super' => $super_post,
-				'total' => $total_post
+				'dbcache' 	=> $dbcache_post,
+				'widget' 	=> $widget_post,
+				'minify' 	=> $minify_post,
+				'super' 		=> $super_post,
+				'total' 		=> $total_post
 			);
 
 			if ( get_option( 'wp_mycache' ) ) { /* Keep It Clean */
@@ -98,7 +98,7 @@ class MyAdminBar_Site_Admin {
 
 				$options_array = array(
 					'wplogo' 	=> $wplogo_post,
-					'howdy' 	=> $howdy_post,
+					'howdy' 		=> $howdy_post,
 					'wpicon' 	=> $wpicon_post,
 					'siteids' 	=> $siteids_post
 				);
@@ -198,7 +198,7 @@ class MyAdminBar_Site_Admin {
 /**
  * The Template
  */	
-		if ( substr_count( $_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip' ) ) { ob_start("ob_gzhandler"); }else{ ob_start(); }
+		ob_start();
 			include MYAB_TEMPLATES . '/settings_sites.php';
 		ob_end_flush();
 

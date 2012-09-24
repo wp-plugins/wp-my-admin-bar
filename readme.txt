@@ -4,8 +4,8 @@ Contributors: tribalNerd, Chris Winters
 Donate link: http://technerdia.com/projects/contribute.html
 Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
 Requires at least: 3.3
-Tested up to: 3.3.1
-Stable tag: 0.1.6
+Tested up to: 3.4.2
+Stable tag: 0.1.7
 
 
 The 'Wp My Admin Bar' Plugin is a Multisite Plugin, which expands on the default Wordpress Admin Bar, adding 3 new quick access menus.
@@ -200,6 +200,26 @@ Custom Settings Tab
 
 == Changelog ==
 Alpha Release
+= 0.1.7 =
+* Created new option wp_myadminbar_nw to allow site id 1 and network admin to use different settings.
+* Created new option wp_cache_nw to allow site id 1 and network admin to use different settings.
+* settings_sites.php template, corrected php debug index errors.
+* settings_network.php template, corrected php debug index errors.
+* settings_sites.class.php corrected php debug index errors.
+* settings_network.class.php adjusted $my_menus to use new wp_myadminbar_nw option.
+* settings_network.class.php adjusted $my_cache to use new wp_cache_nw option.
+* settings_network.class.php corrected php debug index errors.
+* my_tools.class.php adjusted to allow menu to display for non-super admins.
+* my_sites.class.php adjusted sitename in dropdown to use get_bloginfo('name').
+* my_sites.class.php adjusted to allow non-super admins to manage options.
+* my_cache.class.php adjusted sitename in dropdown to use get_bloginfo('name').
+* my_cache.class.php adjusted to allow non-super admins to manage options.
+* Added new calls for wp_myadminbar_nw and wp_myadminbar_nw_status in my_admin_bar.class.php.
+* Added new calls for wp_cache_nw and wp_cache_nw_status in my_admin_bar.class.php.
+* functions.class.php settingsPage class to allow non-super admins to manage settings page.
+* New functions_wp_myadminbar_nw and wp_myadminbar_nw_status added to function.class.php.
+* New functions_wp_cache_nw and wp_cache_nw_status added to function.class.php.
+* Adjusted uninstall.php and activate.php to contain new wp_myadminbar_nw and wp_cache_nw options.
 
 = 0.1.6 =
 * Corrected menu link: My Sites > Visit This Site > View Posts - Now opens the proper edit.php page.

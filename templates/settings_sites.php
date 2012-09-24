@@ -3,17 +3,17 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012, Chris Winters
+ * @copyright Copyright (c) 2012 techNerdia LLC.
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.6
+ * @version 0.1.7
  */
 if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
 if ( false === ( function_exists('is_multisite') && is_multisite() ) ) { $not_multisite = "readonly"; }
 ?>
 	<div class="wrap" style="width:98%;">
 		<h2><?php _e('The WP-MyAdminBar Plugin', 'wp-my-admin-bar');?></h2>
-<?php echo $setting_tabs;?>
+<?php if ( isset ( $setting_tabs ) ) { echo $setting_tabs; };?>
 		<div class="fade error" id="message" onclick="this.parentNode.removeChild(this)"><p><strong><em><?php _e('Adjusting the settings on this page will change the Admin Bar display settings for this Website only!', 'wp-my-admin-bar');?></em></strong></div>
 			<div class="metabox-holder has-right-sidebar">
 <!-- left side -->
@@ -29,9 +29,9 @@ if ( false === ( function_exists('is_multisite') && is_multisite() ) ) { $not_mu
 									<p><?php _e('Select [show] for each of the My Menus you would like to turn on. By default the My Sites &amp; Tools menus have been turned on, and the My Cache menu has been turned off. If your Wordpress Install uses the Cache Plugin(s) listed below, turn on the My Cache Menu then set which Cache Plugin(s) are being used.', 'wp-my-admin-bar');?>
 								<form method="post" action="">
 								<?php wp_nonce_field('my_option_action','my_option_nonce');?>
-									<p><strong><?php _e('Display My Sites Menu', 'wp-my-admin-bar');?></strong>: <input class="valinp" type="radio" name="my_sites" value="show" <?php echo $sites_on;?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio"  name="my_sites" value="hide" <?php echo $sites_off;?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
-									<p><strong><?php _e('Display My Cache Menu', 'wp-my-admin-bar');?></strong>: <input class="valinp" type="radio" name="my_cache" value="show" <?php echo $cache_on;?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio"  name="my_cache" value="hide" <?php echo $cache_off;?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
-									<p><strong><?php _e('Display My Tools Menu', 'wp-my-admin-bar');?></strong>: <input class="valinp" type="radio" name="my_tools" value="show" <?php echo $tools_on;?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio"  name="my_tools" value="hide" <?php echo $tools_off;?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
+									<p><strong><?php _e('Display My Sites Menu', 'wp-my-admin-bar');?></strong>: <input class="valinp" type="radio" name="my_sites" value="show" <?php if ( isset ( $sites_on ) ) { echo $sites_on; }?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio"  name="my_sites" value="hide" <?php if ( isset ( $sites_off ) ) { echo $sites_off; }?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
+									<p><strong><?php _e('Display My Cache Menu', 'wp-my-admin-bar');?></strong>: <input class="valinp" type="radio" name="my_cache" value="show" <?php if ( isset ( $cache_on ) ) { echo $cache_on; }?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio"  name="my_cache" value="hide" <?php if ( isset ( $cache_off ) ) { echo $cache_off; }?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
+									<p><strong><?php _e('Display My Tools Menu', 'wp-my-admin-bar');?></strong>: <input class="valinp" type="radio" name="my_tools" value="show" <?php if ( isset ( $tools_on ) ) { echo $tools_on; }?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio"  name="my_tools" value="hide" <?php if ( isset ( $tools_off ) ) { echo $tools_off; }?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
 									<p><input type="submit" name="save_my_menus" id="save" class="button" value=" <?php _e('Save', 'wp-my-admin-bar');?> "  /></p>
 								</form>
 
@@ -41,11 +41,11 @@ if ( false === ( function_exists('is_multisite') && is_multisite() ) ) { $not_mu
 									<p><?php _e('By default all Cache menu options are turn off. Select', 'wp-my-admin-bar');?> [<?php _e('show', 'wp-my-admin-bar');?>] <?php _e('for each cache plugin this Website uses to enable a quick link to the selected cache plugin under the My Cache menu', 'wp-my-admin-bar');?>.</p>
 								<form method="post" action="">
 								<?php wp_nonce_field('my_cache_action','my_cache_nonce');?>
-									<p><strong><?php _e('Display', 'wp-my-admin-bar');?> <a href="http://wordpress.org/extend/plugins/wp-minify/" target="_blank"><?php _e('Wp Minify', 'wp-my-admin-bar');?></a></strong>: <input class="valinp" type="radio" name="minify" value="show" <?php echo $minify_on;?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio" name="minify" value="hide" <?php echo $minify_off;?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
-									<p><strong><?php _e('Display', 'wp-my-admin-bar');?> <a href="http://wordpress.org/extend/plugins/db-cache-reloaded-fix/" target="_blank"><?php _e('DB Cache', 'wp-my-admin-bar');?></a></strong>: <input class="valinp" type="radio" name="dbcache" value="show" <?php echo $dbcache_on;?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio" name="dbcache" value="hide" <?php echo $dbcache_off;?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
-									<p><strong><?php _e('Display', 'wp-my-admin-bar');?> <a href="http://wordpress.org/extend/plugins/wp-widget-cache/" target="_blank"><?php _e('Widget Cache', 'wp-my-admin-bar');?></a></strong>: <input class="valinp" type="radio" name="widget" value="show" <?php echo $widget_on;?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio" name="widget" value="hide" <?php echo $widget_off;?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
-									<p><strong><?php _e('Display', 'wp-my-admin-bar');?> <a href="http://wordpress.org/extend/plugins/wp-super-cache/" target="_blank"><?php _e('Super Cache', 'wp-my-admin-bar');?></a></strong>: <input class="valinp" type="radio" name="super" value="show" <?php echo $super_on;?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio" name="super" value="hide" <?php echo $super_off;?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
-									<p><strong><?php _e('Display', 'wp-my-admin-bar');?> <a href="http://wordpress.org/extend/plugins/w3-total-cache/" target="_blank"><?php _e('Total Cache', 'wp-my-admin-bar');?></a></strong>: <input class="valinp" type="radio" name="total" value="show" <?php echo $total_on;?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio" name="total" value="hide" <?php echo $total_off;?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
+									<p><strong><?php _e('Display', 'wp-my-admin-bar');?> <a href="http://wordpress.org/extend/plugins/wp-minify/" target="_blank"><?php _e('Wp Minify', 'wp-my-admin-bar');?></a></strong>: <input class="valinp" type="radio" name="minify" value="show" <?php if ( isset ( $minify_on ) ) { echo $minify_on; }?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio" name="minify" value="hide" <?php if ( isset ( $minify_off ) ) { echo $minify_off; }?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
+									<p><strong><?php _e('Display', 'wp-my-admin-bar');?> <a href="http://wordpress.org/extend/plugins/db-cache-reloaded-fix/" target="_blank"><?php _e('DB Cache', 'wp-my-admin-bar');?></a></strong>: <input class="valinp" type="radio" name="dbcache" value="show" <?php if ( isset ( $dbcache_on ) ) { echo $dbcache_on; }?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio" name="dbcache" value="hide" <?php if ( isset ( $dbcache_off ) ) { echo $dbcache_off; }?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
+									<p><strong><?php _e('Display', 'wp-my-admin-bar');?> <a href="http://wordpress.org/extend/plugins/wp-widget-cache/" target="_blank"><?php _e('Widget Cache', 'wp-my-admin-bar');?></a></strong>: <input class="valinp" type="radio" name="widget" value="show" <?php if ( isset ( $widget_on ) ) { echo $widget_on; }?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio" name="widget" value="hide" <?php if ( isset ( $widget_off ) ) { echo $widget_off; }?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
+									<p><strong><?php _e('Display', 'wp-my-admin-bar');?> <a href="http://wordpress.org/extend/plugins/wp-super-cache/" target="_blank"><?php _e('Super Cache', 'wp-my-admin-bar');?></a></strong>: <input class="valinp" type="radio" name="super" value="show" <?php if ( isset ( $super_on ) ) { echo $super_on; }?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio" name="super" value="hide" <?php if ( isset ( $super_off ) ) { echo $super_off; }?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
+									<p><strong><?php _e('Display', 'wp-my-admin-bar');?> <a href="http://wordpress.org/extend/plugins/w3-total-cache/" target="_blank"><?php _e('Total Cache', 'wp-my-admin-bar');?></a></strong>: <input class="valinp" type="radio" name="total" value="show" <?php if ( isset ( $total_on ) ) { echo $total_on; }?> /> [<?php _e('show', 'wp-my-admin-bar');?>]&nbsp;&nbsp;&nbsp;<input class="valinp" type="radio" name="total" value="hide" <?php if ( isset ( $total_off ) ) { echo $total_off; }?> /> [<?php _e('hide', 'wp-my-admin-bar');?>]</p>
 									<p><input type="submit" name="save_my_cache" id="save" class="button" value=" <?php _e('Save', 'wp-my-admin-bar');?> "  /></p>
 								</form>
 						</div> <!-- end inside -->

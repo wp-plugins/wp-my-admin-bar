@@ -3,10 +3,10 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012, Chris Winters
+ * @copyright Copyright (c) 2012 techNerdia LLC.
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.4
+ * @version 0.1.7
  */
 
 /**
@@ -30,8 +30,10 @@ function wp_myadminbar_uninstall() {
 			foreach ( $site_list as $site ) {
 				switch_to_blog( $site->blog_id );
 				delete_option( 'wp_myadminbar' );		/* My Menus */
-				delete_option( 'wp_mycache' );		/* Cache Plugins */
-				delete_option( 'wp_mycustom' );		/* Custom Settings */
+				delete_option( 'wp_mycache' );			/* Cache Plugins */
+				delete_option( 'wp_mycustom' );			/* Custom Settings */
+				delete_option( 'wp_myadminbar_nw' );	/* My Menus Added in Version 0.1.7 */
+				delete_option( 'wp_mycache_nw' );		/* Cache Plugins Added in Version 0.1.7 */
 			}
 
 			restore_current_blog();
@@ -41,9 +43,11 @@ function wp_myadminbar_uninstall() {
 /**
  * This Site
  */
-	delete_option( 'wp_myadminbar' );			/* My Menus */
-	delete_option( 'wp_mycache' );			/* Cache Plugins */
-	delete_option( 'wp_mycustom' );			/* Custom Settings */
+	delete_option( 'wp_myadminbar' );				/* My Menus */
+	delete_option( 'wp_mycache' );					/* Cache Plugins */
+	delete_option( 'wp_mycustom' );					/* Custom Settings */
+	delete_option( 'wp_myadminbar_nw' );			/* My Menus Added in Version 0.1.7 */
+	delete_option( 'wp_mycache_nw' );				/* Cache Plugins Added in Version 0.1.7 */
 	delete_transient( 'multisite_site_list' );	/* Cache */
 }
 
