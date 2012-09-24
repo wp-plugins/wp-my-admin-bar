@@ -3,7 +3,7 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012 techNerdia LLC.
+ * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
  * @version 0.1.7
@@ -45,7 +45,7 @@ function wordpress_version() {
 function wp_myadminbar_activate() {
 /* Network Install */
 	if ( function_exists('is_multisite') && is_multisite() ) {
-		if ( isset( $_GET['networkwide'] ) && ( $_GET['networkwide'] == 1 ) ) {
+		if ( $_GET['networkwide'] && $_GET['networkwide'] == 1 ) {
 		global $wpdb;
 
 	      $org_blog_id = $wpdb->blogid;
@@ -63,7 +63,7 @@ function wp_myadminbar_activate() {
 				'my_cache' 	=> 'hide',
 				'my_tools' 	=> 'show'
 			);
-	
+
 			add_option( "wp_myadminbar_nw", serialize( $options_array ), 'no' ); /** Added for Version 0.1.7 */
 
 			return;

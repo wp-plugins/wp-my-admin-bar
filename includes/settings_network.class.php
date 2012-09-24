@@ -3,7 +3,7 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012 techNerdia LLC.
+ * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
  * @version 0.1.7
@@ -59,6 +59,7 @@ class MyAdminBar_Network_Admin {
 			$this->wp_myadminbar_blogs( $the_option = 'wp_myadminbar', $options_array ); 	/* Rebuild Option */
 			
 			/* Add A Network Only Option */
+			switch_to_blog(1);
 			add_option( 'wp_myadminbar_nw', serialize( $options_array ), 'no' );
 		}
 
@@ -88,6 +89,7 @@ class MyAdminBar_Network_Admin {
 			$this->wp_myadminbar_blogs( $the_option = 'wp_mycache', $options_array ); /* Rebuild Option */
 
 			/* Add A Network Only Option */
+			switch_to_blog(1);
 			add_option( 'wp_mycache_nw', serialize( $options_array ), 'no' );
 		}
 
