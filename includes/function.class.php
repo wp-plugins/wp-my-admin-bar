@@ -3,10 +3,10 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012 techNerdia LLC.
+ * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.7
+ * @version 0.1.8
  */
 
 /**
@@ -196,4 +196,69 @@ class displayTabs {
 		return $tab_menu;
 	}
 }
+
+
+
+/**
+* Build My Admin Bar Settings For New Websites
+*/
+class SetupNewSite {
+	function __construct() {
+		$this->setup_my_admin_bar();
+	}
+
+	function setup_my_admin_bar() {
+		/** Get Default Options */
+		switch_to_blog(1);
+		$get_wp_myadminbar 	= maybe_unserialize( get_option('wp_myadminbar_nw') );
+		$get_wp_mycache 		= maybe_unserialize( get_option('wp_mycache_nw') );
+		$get_wp_mycustom 		= maybe_unserialize( get_option('wp_mycustom') );
+
+			$wp_myadminbar_options_array = array(
+				'my_sites' 	=> $get_wp_myadminbar['my_sites'],
+				'my_cache' 	=> $get_wp_myadminbar['my_cache'],
+				'my_tools' 	=> $get_wp_myadminbar['my_tools']
+			);
+
+			$wp_mycache_options_array = array(
+				'dbcache' 	=> $get_wp_mycache['dbcache'],
+				'widget' 	=> $get_wp_mycache['widget'],
+				'minify' 	=> $get_wp_mycache['minify'],
+				'super' 		=> $get_wp_mycache['super'],
+				'total' 		=> $get_wp_mycache['total']
+			);
+
+			$wp_mycustom_options_array = array(
+				'wplogo' 	=> $get_wp_mycustom['wplogo'],
+				'howdy' 		=> $get_wp_mycustom['howdy'],
+				'wpicon' 	=> $get_wp_mycustom['wpicon'],
+				'siteids' 	=> $get_wp_mycustom['siteids']
+			);
+
+			/** Switch to New Website */
+			switch_to_blog( $_GET['id'] );
+
+			/** Clear Options Incase Page Is Reloaded */
+			delete_option( 'wp_myadminbar' );
+			delete_option( 'wp_mycache' );
+			delete_option( 'wp_mycustom' );
+
+			/** Build Options */
+			add_option( 'wp_myadminbar', serialize( $wp_myadminbar_options_array ), 'no' );
+			add_option( 'wp_mycache', serialize( $wp_mycache_options_array ), 'no' );
+			add_option( 'wp_mycustom', serialize( $wp_mycustom_options_array ), 'no' );
+
+			/* return home */
+			restore_current_blog();
+
+			/** Update Notice */
+			add_action( 'network_admin_notices', array( 'SetupNewSite', 'network_notices' ) );
+	} /** end setup_my_admin_bar() */
+
+	/** Network Update Notice */
+	function network_notices() {
+		echo '<div class="updated" id="message" onclick="this.parentNode.removeChild(this)"><p><em>My Admin Bar Settings Duplicated To New Website.</em></p></div>';
+		remove_action( 'network_admin_notices', array( 'SetupNewSite', 'network_notices' ) );
+	} /** end network_notices() */
+} /** end class SetupNewSite */
 ?>
