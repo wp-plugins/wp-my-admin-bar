@@ -1,4 +1,4 @@
-<?php error_reporting(-1);
+<?php
 /**
 Plugin Name: WP My Admin Bar | Admin Bar
 Plugin URI: http://technerdia.com/projects/adminbar/plugin.html
