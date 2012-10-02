@@ -200,6 +200,9 @@ Custom Settings Tab
 
 == Changelog ==
 Alpha Release
+= 0.1.8 =
+* Made the plugin automatically duplicate the Plugins settings to newly created Websites.
+
 = 0.1.7 =
 * Created new option wp_myadminbar_nw to allow site id 1 and network admin to use different settings.
 * Created new option wp_cache_nw to allow site id 1 and network admin to use different settings.
