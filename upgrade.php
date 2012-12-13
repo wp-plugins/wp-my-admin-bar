@@ -3,10 +3,10 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012 techNerdia LLC.
+ * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.4
+ * @version 0.1.9
  */
 
 
@@ -65,7 +65,7 @@ class UpgradeMyAdminBar {
 	
 			delete_option( 'wp_myadminbar' );
 
-			add_option( "wp_myadminbar", serialize( $new_options_array ), 'no' );
+			add_option( "wp_myadminbar", serialize( $new_options_array ), '', 'no' );
 		} /* end if */
 
 
@@ -84,7 +84,7 @@ class UpgradeMyAdminBar {
 	
 				delete_option( 'wp_mycache' );
 
-				add_option( "wp_mycache", serialize( $new_options_array ), 'no' );
+				add_option( "wp_mycache", serialize( $new_options_array ), '', 'no' );
 			} /* end if */
 		} /* end if */
 	} /* end wp_myadminbar_upgrade() */

@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.7
+ * @version 0.1.9
  */
 
 
@@ -22,7 +22,7 @@ class MyAdminBar_Network_Admin {
  * Network Settings Page
  */
 	function my_siteadmin_submenu() {
-		add_submenu_page( 'settings.php', 'Admin Bar', 'Admin Bar', 9, 'my_admin_bar.php', array( &$this, 'wp_mynetworkadmin' ) ); 	/* calls core function wp_mynetworkadmin() */
+		add_submenu_page( 'settings.php', 'Admin Bar', 'Admin Bar', 'manage_options', 'my_admin_bar.php', array( &$this, 'wp_mynetworkadmin' ) ); 	/* calls core function wp_mynetworkadmin() */
 	}
 
 /**
@@ -60,7 +60,7 @@ class MyAdminBar_Network_Admin {
 			
 			/* Add A Network Only Option */
 			switch_to_blog(1);
-			add_option( 'wp_myadminbar_nw', serialize( $options_array ), 'no' );
+			add_option( 'wp_myadminbar_nw', serialize( $options_array ), '', 'no' );
 		}
 
 /**
@@ -90,7 +90,7 @@ class MyAdminBar_Network_Admin {
 
 			/* Add A Network Only Option */
 			switch_to_blog(1);
-			add_option( 'wp_mycache_nw', serialize( $options_array ), 'no' );
+			add_option( 'wp_mycache_nw', serialize( $options_array ), '', 'no' );
 		}
 
 /**
@@ -132,11 +132,10 @@ class MyAdminBar_Network_Admin {
 			 * No Transient Check, Delete Transient, Get DB Query, Reset Transient.
 			 * Helps make sure transient cache is correct, resets expire.
 			 */
-				if ( get_site_transient( 'multisite_site_list' ) ) {
-					delete_site_transient( 'multisite_site_list' );
-				}
+				delete_site_transient( 'multisite_site_list' );
 
-				$network_blog_id = $wpdb->get_results( $wpdb->prepare( "SELECT blog_id FROM $wpdb->blogs ORDER BY blog_id" ) );
+				$network_blog_id = $wpdb->get_results( $wpdb->prepare( "SELECT blog_id FROM $wpdb->blogs WHERE site_id = %d AND public = '1' AND archived = '0' AND spam = '0' AND deleted = '0' ORDER BY blog_id", $wpdb->siteid ) );
+				
 				set_site_transient( 'multisite_site_list', $network_blog_id, 86400 );
 
 		foreach ( $network_blog_id as $current_blog_id ) {
@@ -146,7 +145,7 @@ class MyAdminBar_Network_Admin {
 				delete_option( $the_option );
 			}
 
-			add_option( $the_option, serialize( $options_array ), 'no' );
+			add_option( $the_option, serialize( $options_array ), '', 'no' );
 		}
 
 		restore_current_blog();

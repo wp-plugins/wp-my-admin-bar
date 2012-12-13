@@ -3,10 +3,10 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012 techNerdia LLC.
+ * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.7
+ * @version 0.1.9
  */
 
 
@@ -51,8 +51,8 @@ class myCache {
 
 		$wp_admin_bar->add_menu( array(
 			'title' 	=> $name,
-			'id' 	=> $id,
-			'parent' 	=> 'my_cache_sites',
+			'id' 		=> $id,
+			'parent' => 'my_cache_sites',
 			'href' 	=> $href )
 		);
 	}
@@ -60,13 +60,14 @@ class myCache {
 /**
  * Create Item Links
  */
-	function cacheItems( $name, $link, $root_menu, $meta = TRUE ) {
+	function cacheItems( $id, $name, $link, $root_menu, $meta = TRUE ) {
 		global $wp_admin_bar;
 
 		$wp_admin_bar->add_menu( array(
+			'id' 		=> $id,			
 			'title' 	=> '<span style="display:none;">'. $root_menu .'</span>&bull; '. __($name, 'wp-my-admin-bar') .' &raquo;',
 			'href' 	=> $link,
-			'parent' 	=> $root_menu,
+			'parent' => $root_menu,
 			'meta' => array( 'target' => '_blank' ) )
 		);
 	}
@@ -79,8 +80,8 @@ class myCache {
 			if ( !is_user_logged_in() ) { return; }
 			if ( !is_super_admin() || !is_admin_bar_showing() ) { return; }
 		*/
-			if ( !is_user_logged_in() && !is_admin_bar_showing() ) { return; }
-			if ( !current_user_can('manage_options') && !is_user_member_of_blog() ) { return; }
+			if ( !is_user_logged_in() && !is_admin_bar_showing() && !is_user_member_of_blog() ) { return; }
+			if ( !current_user_can('manage_options') ) { return; }
 
 		/* WP Icon */
 			$blue_wp_logo_url = includes_url('images/wpmini-blue.png');
@@ -136,11 +137,11 @@ class myCache {
 					$this->cacheSites( $new_site_name, $parent, "cachemenu" );
 				}
 
-				if ( isset( $minify_status ) ) { $this->cacheItems( "WP Minify", get_admin_url( $site->blog_id, 'options-general.php?page=wp-minify' ), $parent ); }
-				if ( isset( $dbcache_status ) ) { $this->cacheItems( "DB Cache", network_home_url( 'wp-admin/options-general.php?page=db-cache-reloaded-fix/db-cache-reloaded.php' ), $parent ); }
-				if ( isset( $widget_status ) ) { $this->cacheItems( "Widget Cache", get_admin_url( $site->blog_id, 'options-general.php?page=widget-cache.php' ), $parent ); }
-				if ( isset( $super_status ) ) { $this->cacheItems( "Super Cache", get_admin_url( $site->blog_id, 'options-general.php?page=wpsupercache' ), $parent ); }
-				if ( isset( $total_status ) ) { $this->cacheItems( "Total Cache", get_admin_url( $site->blog_id, 'admin.php?page=w3tc_general' ), $parent ); }
+				if ( isset( $minify_status ) ) { $this->cacheItems( 'minify-'. $site->blog_id .'', "WP Minify", get_admin_url( $site->blog_id, 'options-general.php?page=wp-minify' ), $parent ); }
+				if ( isset( $dbcache_status ) ) { $this->cacheItems( 'db-'. $site->blog_id .'', "DB Cache", network_home_url( 'wp-admin/options-general.php?page=db-cache-reloaded-fix/db-cache-reloaded.php' ), $parent ); }
+				if ( isset( $widget_status ) ) { $this->cacheItems( 'widget-'. $site->blog_id .'', "Widget Cache", get_admin_url( $site->blog_id, 'options-general.php?page=widget-cache.php' ), $parent ); }
+				if ( isset( $super_status ) ) { $this->cacheItems( 'super-'. $site->blog_id .'', "Super Cache", get_admin_url( $site->blog_id, 'options-general.php?page=wpsupercache' ), $parent ); }
+				if ( isset( $total_status ) ) { $this->cacheItems( 'total-'. $site->blog_id .'', "Total Cache", get_admin_url( $site->blog_id, 'admin.php?page=w3tc_general' ), $parent ); }
 
 				restore_current_blog();
 			} /* end foreach */
@@ -158,11 +159,11 @@ class myCache {
 			$this->cacheTitle( "cachemenu" );
 			$this->cacheSites( $name, $parent, "cachemenu" );
 
-			if ( $minify_status ) { $this->cacheItems( "WP Minify", get_admin_url( 1, 'options-general.php?page=wp-minify' ), $parent ); }
-			if ( $dbcache_status ) { $this->cacheItems( "DB Cache", get_admin_url( 1, 'options-general.php?page=db-cache-reloaded-fix/db-cache-reloaded.php' ), $parent ); }
-			if ( $widget_status ) { $this->cacheItems( "Widget Cache", get_admin_url( 1, 'options-general.php?page=widget-cache.php' ), $parent ); }
-			if ( $super_status ) { $this->cacheItems( "Super Cache", get_admin_url( 1, 'options-general.php?page=wpsupercache' ), $parent ); }
-			if ( $total_status ) { $this->cacheItems( "Total Cache", get_admin_url( 1, 'options-general.php?page=totalcache' ), $parent ); }
+			if ( $minify_status ) { $this->cacheItems( 'minify-'. $site->blog_id .'', "WP Minify", get_admin_url( 1, 'options-general.php?page=wp-minify' ), $parent ); }
+			if ( $dbcache_status ) { $this->cacheItems( 'db-'. $site->blog_id .'', "DB Cache", get_admin_url( 1, 'options-general.php?page=db-cache-reloaded-fix/db-cache-reloaded.php' ), $parent ); }
+			if ( $widget_status ) { $this->cacheItems( 'widget-'. $site->blog_id .'', "Widget Cache", get_admin_url( 1, 'options-general.php?page=widget-cache.php' ), $parent ); }
+			if ( $super_status ) { $this->cacheItems( 'super-'. $site->blog_id .'', "Super Cache", get_admin_url( 1, 'options-general.php?page=wpsupercache' ), $parent ); }
+			if ( $total_status ) { $this->cacheItems( 'total-'. $site->blog_id .'', "Total Cache", get_admin_url( 1, 'options-general.php?page=totalcache' ), $parent ); }
 		} /* end multisite */
 	} /* end function */
 } /* end class */
