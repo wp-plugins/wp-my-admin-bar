@@ -4,7 +4,7 @@ Contributors: tribalNerd, Chris Winters
 Donate link: http://technerdia.com/projects/contribute.html
 Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
 Requires at least: 3.3
-Tested up to: 3.4.2
+Tested up to: 3.5
 Stable tag: 0.1.9
 
 
