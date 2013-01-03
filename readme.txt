@@ -2,17 +2,17 @@
 Plugin Name: WP My Admin Bar | Admin Bar
 Contributors: tribalNerd, Chris Winters
 Donate link: http://technerdia.com/projects/contribute.html
-Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
+Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, admin-bar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 0.1.8
+Stable tag: 0.2.0
 
 
-The 'Wp My Admin Bar' Plugin is a Multisite Plugin, which expands on the default Wordpress Admin Bar, adding 3 new quick access menus.
+The 'Wp My Admin Bar' Plugin expands on the default Wordpress Admin Bar, adding 3 new quick access menus.
 
 == Description ==
 
-The Wp My Admin Bar Plugin is a Multisite Plugin, which expands on the default Wordpress Admin Bar, adding 3 new quick access menus.
+The Wp My Admin Bar Plugin expands on the default Wordpress Admin Bar, adding 3 new quick access menus.
 
 The Plugin does not remove or disable the current Admin Bar. The menus are added to the current admin bar, which allows the built in Wordpress security features and Admin Bar features to function as you would expect.
 
@@ -129,7 +129,7 @@ A) Yes!!! If you use Multisite use: Super Cache + Widget Cache. Non-Multisite se
 	- Wp Minify and DB Cache are optional plugins that may or may not work for you, depending on your setup, themes, and other junk.
 
 
-= Q) If I disable the plugin are the options deleted? =
+= Q) If I disable the plugin are the plugin settings deleted? =
 
 A) No, disabling keeps everything in place. However, deleting the plugin (through the Wordpress Admin) will remove all settings.
 
@@ -144,10 +144,9 @@ A) I'm not sure, however it's only one Website, setting it back will only take a
 A) No, not until you update the Network Admin Settings directly.
 
 
-= Q) What's a fast Load Time? =
+= Q) Does the Plugin automatically populate a new Website when it's created in the Network Admin? =
 
-A) First, the load time includes much more than just the menus or the settings page load time. Many/Most Wordpress Plugins load scripts & itself, while in the Wordpress Admin, when many don't need to be loaded, this is what typically makes a Wordpress Admin hang for a few seconds. So to answer the question, it greatly depends on your Internet connection, the Host Wordpress is on, server specs, the plugins/scripts that load with Wordpress and a ton of other stuff. However, anything in the .5 range (1/2 second) or below is pretty decent for a Wordpress Admin.
-
+A) Yes.
 
 
 [Frequently Asked Questions](http://technerdia.com/projects/adminbar/faq.html)
@@ -180,28 +179,20 @@ Custom Settings Tab
 
 ** NOTE: Disabling this plugin does not remove the options. Deleting the plugin, through Wordpress, deletes the options.
 
-
-### Plugin Wishlist:
-
-* Make My-Sites sub-menus float to center or force align bottom.
-* My Sites Menu: Ability to disable options.
-* My Cache Menu: Ability to add unique cache plugin information.
-* My Tools Menu: Ability to add/disable options.
-* Network admin: Display for admin only, users, authors, etc.
-* Network admin: Allow other admins / registered users to have a custom MyAdminBar.
-* Network admin: Add view/adjust settings per user.
-* Network admin: MyAdminBar Positions.
-* Network admin: MyAdminBar Transparency.
-* Menus: Add max number of sites to display in My Sites & My Cache.
-* Menus: Either - Add pages to menus, group menus into sub-sub-groups, or custom load fake menu to select active site (group) list.
-* Menus: Disable query on menus until menu option is activated.
-
-
-
 == Changelog ==
 Alpha Release
-= 0.1.8 =
-* Made the plugin automatically duplicate the Plugins settings to newly created Websites.
+= 0.2.0 =
+* Added delete_site_transient when new Websites are created via the Network Admin.
+* Readme file updated.
+
+= 0.1.9 =
+* Modified prepare() statements.
+* Corrected missing menu ID's.
+* Modified add_options statements.
+* Removed Add Links Link under My Sites Menu.
+* Added View Comments Link under My Sites Menu.
+* Improved current_user_can for lower Admins.
+* PHP Debug and WP Debug checked.
 
 = 0.1.7 =
 * Created new option wp_myadminbar_nw to allow site id 1 and network admin to use different settings.

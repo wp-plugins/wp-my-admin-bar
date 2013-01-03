@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.8
+ * @version 0.2.0
  */
 
 /**
@@ -82,16 +82,18 @@ class MyFunctions {
 
 /* db query and transient */
 	public function get_my_site_list() {
-			if ( false === ( $site_list = get_transient( 'multisite_site_list' ) ) ) {
+			if ( false === ( $site_list = get_site_transient( 'multisite_site_list' ) ) ) {
 				global $wpdb;
-				
-				if ( get_site_transient( 'multisite_site_list' ) ) { /* just to be safe */
-					delete_site_transient( 'multisite_site_list' );
-				}
 
-				$site_list = $wpdb->get_results( $wpdb->prepare( 'SELECT blog_id FROM '. $wpdb->blogs .'  ORDER BY blog_id' ) );
+				delete_site_transient( 'multisite_site_list' ); /* just to be safe */
+
+				$site_list = $wpdb->get_results( $wpdb->prepare( "SELECT blog_id FROM $wpdb->blogs WHERE site_id = %d AND public = '1' AND archived = '0' AND spam = '0' AND deleted = '0' ORDER BY blog_id", $wpdb->siteid ) );
+
 				set_site_transient( 'multisite_site_list', $site_list, 86400 );
+			} else {
+				$site_list = get_site_transient( 'multisite_site_list' );
 			}
+
 		return $site_list;
 	}
 }
@@ -110,9 +112,9 @@ class networkPage {
 	}
 	
 	function include_network() {
-		if ( !is_user_logged_in() ) { return; }																		/* Logged in users only */
+		if ( !is_user_logged_in() ) { return; }									/* Logged in users only */
 	
-		if ( current_user_can('manage_options') && is_user_member_of_blog() && is_super_admin() ) {	/* Proper users only */
+		if ( is_user_member_of_blog() && is_super_admin() ) {					/* Proper users only */
 			/* include - call class */
 			require_once MYAB_INCLUDES . '/settings_network.class.php';
 				$wp_mynetworkadmin = new MyAdminBar_Network_Admin();
@@ -242,11 +244,12 @@ class SetupNewSite {
 			delete_option( 'wp_myadminbar' );
 			delete_option( 'wp_mycache' );
 			delete_option( 'wp_mycustom' );
+			delete_site_transient( 'multisite_site_list' ); /* clear db cache */
 
 			/** Build Options */
-			add_option( 'wp_myadminbar', serialize( $wp_myadminbar_options_array ), 'no' );
-			add_option( 'wp_mycache', serialize( $wp_mycache_options_array ), 'no' );
-			add_option( 'wp_mycustom', serialize( $wp_mycustom_options_array ), 'no' );
+			add_option( 'wp_myadminbar', serialize( $wp_myadminbar_options_array ), '', 'no' );
+			add_option( 'wp_mycache', serialize( $wp_mycache_options_array ), '', 'no' );
+			add_option( 'wp_mycustom', serialize( $wp_mycustom_options_array ), '', 'no' );
 
 			/* return home */
 			restore_current_blog();

@@ -3,10 +3,10 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012 techNerdia LLC.
+ * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.7
+ * @version 0.1.9
  */
 
 
@@ -22,7 +22,7 @@ class MyAdminBar_Site_Admin {
  * Settings Page
  */
 	function wp_siteadmin_submenu() {
-		add_submenu_page( 'options-general.php', 'Admin Bar', 'Admin Bar', 9, 'my_admin_bar.php', array( &$this, 'wp_mysiteadmin' ) ); 	/* calls core function wp_mysiteadmin() */
+		add_submenu_page( 'options-general.php', 'Admin Bar', 'Admin Bar', 'manage_options', 'my_admin_bar.php', array( &$this, 'wp_mysiteadmin' ) ); 	/* calls core function wp_mysiteadmin() */
 	}
 
 /**
@@ -31,7 +31,6 @@ class MyAdminBar_Site_Admin {
 	function __construct() {
 		add_action( 'admin_menu', array( &$this, 'wp_siteadmin_submenu' ) ); 													/* calls submenu wp_siteadmin_submenu() */
 	}
-
 
 /**
  * Core Function: Update Options on Post and Build Network Template
@@ -55,7 +54,7 @@ class MyAdminBar_Site_Admin {
 				delete_option( 'wp_myadminbar' );
 			}
 
-			add_option( "wp_myadminbar", serialize( $options_array ), 'no' ); /* Rebuild Option */
+			add_option( "wp_myadminbar", serialize( $options_array ), '', 'no' ); /* Rebuild Option */
 			print '<div class="updated"><p><strong>'. __('Menu Settings saved: If the admin bar did not visually change', 'wp-my-admin-bar') .', <a href="http://'.$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'].'">'. __('refresh this page', 'wp-my-admin-bar') .'</a>.</strong></p></div>';
 		}
 
@@ -81,7 +80,7 @@ class MyAdminBar_Site_Admin {
 				delete_option( 'wp_mycache' );
 			}
 
-			add_option( "wp_mycache", serialize( $options_array ), 'no' ); /* Rebuild Option */
+			add_option( "wp_mycache", serialize( $options_array ), '', 'no' ); /* Rebuild Option */
 			print '<div class="updated"><p><strong>'. __('Cache Menu Option Saved: If the admin bar did not visually change', 'wp-my-admin-bar') .', <a href="http://'.$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'].'">'. __('refresh this page', 'wp-my-admin-bar') .'</a>.</strong></p></div>';
 		}
 
@@ -107,7 +106,7 @@ class MyAdminBar_Site_Admin {
 					delete_option( 'wp_mycustom' );
 				}
 
-				add_option( "wp_mycustom", serialize( $options_array ), 'no' ); /* Rebuild Option */
+				add_option( "wp_mycustom", serialize( $options_array ), '', 'no' ); /* Rebuild Option */
 			}
 		}
 
