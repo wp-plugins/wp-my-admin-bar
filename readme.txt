@@ -5,7 +5,7 @@ Donate link: http://technerdia.com/projects/contribute.html
 Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, admin-bar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 0.2
+Stable tag: 0.2.0
 
 
 The 'Wp My Admin Bar' Plugin expands on the default Wordpress Admin Bar, adding 3 new quick access menus.

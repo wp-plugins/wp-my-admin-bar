@@ -4,7 +4,7 @@ Plugin Name: WP My Admin Bar | Admin Bar
 Plugin URI: http://technerdia.com/projects/adminbar/plugin.html
 Description: The WP My Admin Bar Plugin, replaces and expands the Wordpress Admin Bar, adding a new My Sites menu with extended options, a My Cache menu for quick cache access and My Tools for all WP Developers and Blogger needs.
 Tags: myadmin, myadminbar, adminbar, admin bar, admin, bar, toolbar, tool bar, my sites, mysites, tools, cache, multisite, webtools, web tools, technerdia
-Version: 0.2
+Version: 0.2.0
 License: GPL
 Author: tribalNerd
 Author URI: http://techNerdia.com/
