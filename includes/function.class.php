@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.9
+ * @version 0.2
  */
 
 /**
@@ -244,6 +244,7 @@ class SetupNewSite {
 			delete_option( 'wp_myadminbar' );
 			delete_option( 'wp_mycache' );
 			delete_option( 'wp_mycustom' );
+			delete_site_transient( 'multisite_site_list' ); /* clear db cache */
 
 			/** Build Options */
 			add_option( 'wp_myadminbar', serialize( $wp_myadminbar_options_array ), '', 'no' );

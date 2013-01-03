@@ -2,10 +2,10 @@
 Plugin Name: WP My Admin Bar | Admin Bar
 Contributors: tribalNerd, Chris Winters
 Donate link: http://technerdia.com/projects/contribute.html
-Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
+Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, admin-bar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
 Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 0.1.9
+Tested up to: 3.4.2
+Stable tag: 0.2
 
 
 The 'Wp My Admin Bar' Plugin expands on the default Wordpress Admin Bar, adding 3 new quick access menus.
@@ -144,6 +144,10 @@ A) I'm not sure, however it's only one Website, setting it back will only take a
 A) No, not until you update the Network Admin Settings directly.
 
 
+= Q) Does the Plugin automatically populate a new Website when it's created in the Network Admin? =
+
+A) Yes.
+
 
 [Frequently Asked Questions](http://technerdia.com/projects/adminbar/faq.html)
 
@@ -177,6 +181,10 @@ Custom Settings Tab
 
 == Changelog ==
 Alpha Release
+= 0.2.0 =
+* Added delete_site_transient when new Websites are created via the Network Admin.
+* Readme file updated.
+
 = 0.1.9 =
 * Modified prepare() statements.
 * Corrected missing menu ID's.
