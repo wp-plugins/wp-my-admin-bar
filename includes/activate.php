@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.7
+ * @version 0.1.9
  */
 
 
@@ -49,7 +49,8 @@ function wp_myadminbar_activate() {
 		global $wpdb;
 
 	      $org_blog_id = $wpdb->blogid;
-			$network_blog_id = $wpdb->get_col( $wpdb->prepare( "SELECT blog_id FROM $wpdb->blogs" ) );
+
+			$network_blog_id = $wpdb->get_results( $wpdb->prepare( "SELECT blog_id FROM $wpdb->blogs WHERE site_id = %d AND public = '1' AND archived = '0' AND spam = '0' AND deleted = '0' ORDER BY blog_id", $wpdb->siteid ) );
 
 			foreach ( $network_blog_id as $current_blog_id ) {
 				switch_to_blog( $current_blog_id );
@@ -64,7 +65,7 @@ function wp_myadminbar_activate() {
 				'my_tools' 	=> 'show'
 			);
 
-			add_option( "wp_myadminbar_nw", serialize( $options_array ), 'no' ); /** Added for Version 0.1.7 */
+			add_option( "wp_myadminbar_nw", serialize( $options_array ), '', 'no' ); /** Added for Version 0.1.7 */
 
 			return;
 		}
@@ -87,7 +88,7 @@ function wp_myadminbar_install() {
 	);
 
 /* Default Option */
-	add_option( "wp_myadminbar", serialize( $options_array ), 'no' );
+	add_option( "wp_myadminbar", serialize( $options_array ), '', 'no' );
 }
 
 

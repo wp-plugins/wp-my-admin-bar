@@ -3,10 +3,10 @@
  * WP My Admin Bar
  * @package WP My Admin Bar
  * @author tribalNerd (tribalnerd@technerdia.com)
- * @copyright Copyright (c) 2012 techNerdia LLC.
+ * @copyright Copyright (c) 2012, Chris Winters
  * @link http://technerdia.com/projects/adminbar/plugin.html
  * @license http://www.gnu.org/licenses/gpl.html
- * @version 0.1.7
+ * @version 0.1.9
  */
 
 
@@ -70,8 +70,8 @@ class mySites {
 
 		$wp_admin_bar->add_menu( array(
 			'title' 	=> $name,
-			'id' 	=> $id,
-			'parent' 	=> 'my_site_list',
+			'id' 		=> $id,
+			'parent' => 'my_site_list',
 			'href' 	=> $href )
 		);
 	}
@@ -84,8 +84,8 @@ class mySites {
 
 		$wp_admin_bar->add_menu( array(
 			'title' 	=> __('My Network Admin', 'wp-my-admin-bar'),
-			'id' 	=> $id,
-			'parent' 	=> $root_menu,
+			'id' 		=> $id,
+			'parent' => $root_menu,
 			'href' 	=> $href )
 		);
 	}
@@ -99,21 +99,22 @@ class mySites {
 		$wp_admin_bar->add_menu( array(
 			'title' 	=> ''. __('Visit This Website', 'wp-my-admin-bar') .' &raquo;',
 			'href' 	=> $href,
-			'id' 	=> $id,
-			'parent' 	=> $root_menu,
+			'id' 		=> $id,
+			'parent' => $root_menu,
 			'meta' 	=> array( 'target' => '_blank' ) )
 		);
 	}
 /**
  * Sub Menu to Item
  */
-	function menuSelect( $name, $link, $root_menu, $meta = FALSE ) {
+	function menuSelect( $id, $name, $link, $root_menu, $meta = FALSE ) {
 		global $wp_admin_bar;
 
 		$wp_admin_bar->add_menu( array(
+			'id' 		=> $id,
 			'title' 	=> '<span style="display:none;">'. $root_menu .'</span>&bull; '. __($name, 'wp-my-admin-bar') .' &raquo;',
 			'href' 	=> $link,
-			'parent' 	=> $root_menu,
+			'parent' => $root_menu,
 			'meta' 	=> $meta )
 		);
 	}
@@ -136,7 +137,7 @@ class mySites {
 
 /**
  * Create Item Links
- */
+
 	function externalItem( $name, $link, $root_menu, $meta = TRUE ) {
 		global $wp_admin_bar;
 
@@ -147,7 +148,7 @@ class mySites {
 			'meta' 	=> array( target => '_blank' ) )
 		);
 	}
-
+ */
 /**
  * Build The Menu
  */
@@ -167,38 +168,40 @@ class mySites {
 			/* Network Menu */
 			if ( is_super_admin() ) { /* Added for Version 0.1.7 */
 				$this->networkAdmin( network_admin_url(), "networkmenu", "menutitle" );
-				$this->menuSelect( "Dashboard", network_admin_url(), "networkmenu" );
-				$this->menuSelect( "Network Home", network_home_url( 'wp-admin/' ), "networkmenu" );
-				$this->menuSelect( "Edit This Site", network_admin_url( "site-info.php?id=$blog_id" ), "networkmenu" );
-				$this->menuSelect( "Show Sites", network_admin_url( 'sites.php' ), "networkmenu" );
-				$this->menuSelect( "Users Admin", network_admin_url( 'users.php' ), "networkmenu" );
-				$this->menuSelect( "Themes Admin", network_admin_url( 'themes.php' ), "networkmenu" );
-				$this->menuSelect( "Plugins Admin", network_admin_url( 'plugins.php' ), "networkmenu" );
-				$this->menuSelect( "Settings Admin", network_admin_url( 'settings.php' ), "networkmenu" );
-				$this->menuSelect( "Log Out", get_home_url( $blog_id, '/wp-login.php?action=logout' ), "networkmenu" );
+				$this->menuSelect( "networkAdmin01", "Dashboard", network_admin_url(), "networkmenu" );
+				$this->menuSelect( "networkAdmin02", "Network Home", network_home_url( 'wp-admin/' ), "networkmenu" );
+				$this->menuSelect( "networkAdmin03", "Edit This Site", network_admin_url( "site-info.php?id=$blog_id" ), "networkmenu" );
+				$this->menuSelect( "networkAdmin04", "Show Sites", network_admin_url( 'sites.php' ), "networkmenu" );
+				$this->menuSelect( "networkAdmin05", "Users Admin", network_admin_url( 'users.php' ), "networkmenu" );
+				$this->menuSelect( "networkAdmin06", "Themes Admin", network_admin_url( 'themes.php' ), "networkmenu" );
+				$this->menuSelect( "networkAdmin07", "Plugins Admin", network_admin_url( 'plugins.php' ), "networkmenu" );
+				$this->menuSelect( "networkAdmin08", "Settings Admin", network_admin_url( 'settings.php' ), "networkmenu" );
+				$this->menuSelect( "networkAdmin09", "Log Out", get_home_url( $blog_id, '/wp-login.php?action=logout' ), "networkmenu" );
 			}
 
 			/* Visit This Website Menu */
 			if ( !is_network_admin() ) {
 				$this->networkSite( get_home_url( $blog_id, '/' ), "sitejumpmenu", "menutitle" );
-				$this->menuSelect( "Dashboard", get_admin_url( $blog_id ), "sitejumpmenu" );
+				$this->menuSelect( "thissite00", "Dashboard", get_admin_url( $blog_id ), "sitejumpmenu" );
 					if ( current_user_can_for_blog( $blog_id, 'edit_posts' ) ) {
-						$this->menuSelect( "Visit Site", get_home_url( $blog_id, '/' ), "sitejumpmenu" );
-						$this->menuSelect( "Log Out", get_home_url( $blog_id, '/wp-login.php?action=logout' ), "sitejumpmenu" );
-						$this->menuSelect( "Add Content", "", "sitejumpmenu" );
-						$this->menuSelect( "Add Post", get_admin_url( $blog_id, 'post-new.php' ), "sitejumpmenu" );
-						$this->menuSelect( "Add Page", get_admin_url( $blog_id, 'post-new.php?post_type=page' ), "sitejumpmenu" );
-						$this->menuSelect( "Add Media", get_admin_url( $blog_id, 'media-new.php' ), "sitejumpmenu" );
-						$this->menuSelect( "Add Link", get_admin_url( $blog_id, 'link-add.php' ), "sitejumpmenu" );
-						$this->menuSelect( "Posts and Pages", "", "sitejumpmenu" );
-						$this->menuSelect( "View Posts", get_admin_url( $blog_id, 'post-new.php' ), "sitejumpmenu" );
-						$this->menuSelect( "View Drafts", get_admin_url( $blog_id, 'edit.php?post_status=draft&post_type=post' ), "sitejumpmenu" );
-						$this->menuSelect( "View Pages", get_admin_url( $blog_id, 'edit.php?post_type=page' ), "sitejumpmenu" );
-						$this->menuSelect( "Administration", "", "sitejumpmenu" );
-						$this->menuSelect( "Appearance Admin", get_admin_url( $blog_id, 'themes.php' ), "sitejumpmenu" );
-						$this->menuSelect( "Plugins Admin", get_admin_url( $blog_id, 'plugins.php' ), "sitejumpmenu" );
-						$this->menuSelect( "Users Admin", get_admin_url( $blog_id, 'users.php' ), "sitejumpmenu" );
-						$this->menuSelect( "Settings Admin", get_admin_url( $blog_id, 'options-general.php' ), "sitejumpmenu" );
+						$this->menuSelect( "thissite01", "Visit Site", get_home_url( $blog_id, '/' ), "sitejumpmenu" );
+						$this->menuSelect( "thissite02", "Log Out", get_home_url( $blog_id, '/wp-login.php?action=logout' ), "sitejumpmenu" );
+						$this->menuSelect( "thissite03", "Add Content", "", "sitejumpmenu" );
+						$this->menuSelect( "thissite04", "Add Post", get_admin_url( $blog_id, 'post-new.php' ), "sitejumpmenu" );
+						$this->menuSelect( "thissite05", "Add Page", get_admin_url( $blog_id, 'post-new.php?post_type=page' ), "sitejumpmenu" );
+						$this->menuSelect( "thissite06", "Add Media", get_admin_url( $blog_id, 'media-new.php' ), "sitejumpmenu" );
+						//$this->menuSelect( "thissite07", "Add Link", get_admin_url( $blog_id, 'link-add.php' ), "sitejumpmenu" );
+						$this->menuSelect( "thissite08", "Posts and Pages", "", "sitejumpmenu" );
+						$this->menuSelect( "thissite09", "View Posts", get_admin_url( $blog_id, 'post-new.php' ), "sitejumpmenu" );
+						$this->menuSelect( "thissite10", "View Drafts", get_admin_url( $blog_id, 'edit.php?post_status=draft&post_type=post' ), "sitejumpmenu" );
+						$this->menuSelect( "thissite11", "View Pages", get_admin_url( $blog_id, 'edit.php?post_type=page' ), "sitejumpmenu" );
+							if ( current_user_can('manage_options') ) {
+								$this->menuSelect( "thissite12", "Administration", "", "sitejumpmenu" );
+								$this->menuSelect( "thissite13", "Appearance Admin", get_admin_url( $blog_id, 'themes.php' ), "sitejumpmenu" );
+								$this->menuSelect( "thissite14", "Plugins Admin", get_admin_url( $blog_id, 'plugins.php' ), "sitejumpmenu" );
+								$this->menuSelect( "thissite15", "Users Admin", get_admin_url( $blog_id, 'users.php' ), "sitejumpmenu" );
+								$this->menuSelect( "thissite16", "Settings Admin", get_admin_url( $blog_id, 'options-general.php' ), "sitejumpmenu" );
+							 }
 					}
 			}
 
@@ -250,22 +253,25 @@ class mySites {
 					/* Website Menus */
 						if ( current_user_can_for_blog( $site->blog_id, 'edit_posts' ) ) { /* Moved for Version 0.1.7 */
 							$this->menuOption( $new_site_name, $site->blog_id, "menutitle" );
-							$this->menuSelect( "Dashboard", get_admin_url( $site->blog_id ), $site->blog_id );
-							$this->menuSelect( "Visit Site", get_home_url( $site->blog_id, '/' ), $site->blog_id );
-							$this->menuSelect( "Add Content", "", $site->blog_id );
-							$this->menuSelect( "Add Post", get_admin_url( $site->blog_id, 'post-new.php' ), $site->blog_id );
-							$this->menuSelect( "Add Page", get_admin_url( $site->blog_id, 'post-new.php?post_type=page' ), $site->blog_id );
-							$this->menuSelect( "Add Media", get_admin_url( $site->blog_id, 'media-new.php' ), $site->blog_id );
-							$this->menuSelect( "Add Link", get_admin_url( $site->blog_id, 'link-add.php' ), $site->blog_id );
-							$this->menuSelect( "Posts and Pages", "", $site->blog_id );
-							$this->menuSelect( "View Posts", get_admin_url( $site->blog_id, 'edit.php' ), $site->blog_id );
-							$this->menuSelect( "View Drafts", get_admin_url( $site->blog_id, 'edit.php?post_status=draft&post_type=post' ), $site->blog_id );
-							$this->menuSelect( "View Pages", get_admin_url( $site->blog_id, 'edit.php?post_type=page' ), $site->blog_id );
-							$this->menuSelect( "Administration", "", $site->blog_id );
-							$this->menuSelect( "Appearance Admin", get_admin_url( $site->blog_id, 'themes.php' ), $site->blog_id );
-							$this->menuSelect( "Plugins Admin", get_admin_url( $site->blog_id, 'plugins.php' ), $site->blog_id );
-							$this->menuSelect( "Users Admin", get_admin_url( $site->blog_id, 'users.php' ), $site->blog_id );
-							$this->menuSelect( "Settings Admin", get_admin_url( $site->blog_id, 'options-general.php' ), $site->blog_id );
+							$this->menuSelect( 'Dashboard-'. $site->blog_id .'-m', "Dashboard", get_admin_url( $site->blog_id ), $site->blog_id );
+							$this->menuSelect( 'VisitSite-'. $site->blog_id .'-m', "Visit Site", get_home_url( $site->blog_id, '/' ), $site->blog_id );
+							$this->menuSelect( 'Comments-'. $site->blog_id .'-m', "View Comments", get_admin_url( $site->blog_id, 'edit-comments.php' ), $site->blog_id );
+							$this->menuSelect( 'AddContent-'. $site->blog_id .'-m', "Add Content", "", $site->blog_id );
+							$this->menuSelect( 'AddPost-'. $site->blog_id .'-m', "Add Post", get_admin_url( $site->blog_id, 'post-new.php' ), $site->blog_id );
+							$this->menuSelect( 'AddPage-'. $site->blog_id .'-m', "Add Page", get_admin_url( $site->blog_id, 'post-new.php?post_type=page' ), $site->blog_id );
+							$this->menuSelect( 'AddMedia-'. $site->blog_id .'-m', "Add Media", get_admin_url( $site->blog_id, 'media-new.php' ), $site->blog_id );
+							//$this->menuSelect( 'AddLink-'. $site->blog_id .'-m', "Add Link", get_admin_url( $site->blog_id, 'link-add.php' ), $site->blog_id );
+							$this->menuSelect( 'PostsandPages-'. $site->blog_id .'-m', "Posts and Pages", "", $site->blog_id );
+							$this->menuSelect( 'ViewPosts-'. $site->blog_id .'-m', "View Posts", get_admin_url( $site->blog_id, 'edit.php' ), $site->blog_id );
+							$this->menuSelect( 'ViewDrafts-'. $site->blog_id .'-m', "View Drafts", get_admin_url( $site->blog_id, 'edit.php?post_status=draft&post_type=post' ), $site->blog_id );
+							$this->menuSelect( 'ViewPages-'. $site->blog_id .'-m', "View Pages", get_admin_url( $site->blog_id, 'edit.php?post_type=page' ), $site->blog_id );
+								if ( current_user_can('manage_options') ) {							
+									$this->menuSelect( 'Administration-'. $site->blog_id .'-m', "Administration", "", $site->blog_id );
+									$this->menuSelect( 'AppearanceAdmin-'. $site->blog_id .'-m', "Appearance Admin", get_admin_url( $site->blog_id, 'themes.php' ), $site->blog_id );
+									$this->menuSelect( 'PluginsAdmin-'. $site->blog_id .'-m', "Plugins Admin", get_admin_url( $site->blog_id, 'plugins.php' ), $site->blog_id );
+									$this->menuSelect( 'UsersAdmin-'. $site->blog_id .'-m', "Users Admin", get_admin_url( $site->blog_id, 'users.php' ), $site->blog_id );
+									$this->menuSelect( 'SettingsAdmin-'. $site->blog_id .'-m', "Settings Admin", get_admin_url( $site->blog_id, 'options-general.php' ), $site->blog_id );
+								}
 						} /* end if */
 				restore_current_blog();
 			} /* end foreach */
@@ -287,7 +293,7 @@ class mySites {
 					$this->menuSelect( "Add Post", get_admin_url( 1, 'post-new.php' ), "menutitle" );
 					$this->menuSelect( "Add Page", get_admin_url( 1, 'post-new.php?post_type=page' ), "menutitle" );
 					$this->menuSelect( "Add Media", get_admin_url( 1, 'media-new.php' ), "menutitle" );
-					$this->menuSelect( "Add Link", get_admin_url( 1, 'link-add.php' ), "menutitle" );
+					//$this->menuSelect( "Add Link", get_admin_url( 1, 'link-add.php' ), "menutitle" );
 					$this->menuSelect( "Posts and Pages", "", "menutitle" );
 					$this->menuSelect( "View Posts", get_admin_url( 1, 'post-new.php' ), "menutitle" );
 					$this->menuSelect( "View Drafts", get_admin_url( 1, 'edit.php?post_status=draft&post_type=post' ), "menutitle" );

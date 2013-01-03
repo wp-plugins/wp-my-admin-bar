@@ -2,9 +2,9 @@
 /**
 Plugin Name: WP My Admin Bar | Admin Bar
 Plugin URI: http://technerdia.com/projects/adminbar/plugin.html
-Description: The WP-MyAdminBar Plugin, replaces and expands the Wordpress Administration Bar, adding a new My Sites menu with extended options, a My Cache menu for quick cache access and My Tools for all WP Developers and Blogger needs.
-Tags: myadmin, myadminbar, adminbar, admin bar, admin, bar, my sites, mysites, tools, cache, multisite, webtools, web tools, technerdia
-Version: 0.1.8
+Description: The WP My Admin Bar Plugin, replaces and expands the Wordpress Admin Bar, adding a new My Sites menu with extended options, a My Cache menu for quick cache access and My Tools for all WP Developers and Blogger needs.
+Tags: myadmin, myadminbar, adminbar, admin bar, admin, bar, toolbar, tool bar, my sites, mysites, tools, cache, multisite, webtools, web tools, technerdia
+Version: 0.2
 License: GPL
 Author: tribalNerd
 Author URI: http://techNerdia.com/
@@ -26,7 +26,7 @@ this program; if not, please visit: http://www.gnu.org/licenses/gpl.html
 @copyright Copyright (c) 2012, Chris Winters
 @link http://technerdia.com/projects/adminbar/plugin.html
 @license http://www.gnu.org/licenses/gpl.html
-@version 0.1.7
+@version 0.2
 */
 
 if ( !defined( 'ABSPATH' ) ) { exit; } /* Wordpress check */
@@ -39,8 +39,6 @@ function wp_my_admin_bar_init() {
 		load_plugin_textdomain( 'wp-my-admin-bar', false, $plugin_dir );
 }
 add_action('init', 'wp_my_admin_bar_init');
-
-
 
 /**
  * Define Named Constants
