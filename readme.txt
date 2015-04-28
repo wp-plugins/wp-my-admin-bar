@@ -3,9 +3,9 @@ Plugin Name: WP My Admin Bar | Admin Bar
 Contributors: tribalNerd, Chris Winters
 Donate link: http://technerdia.com/projects/contribute.html
 Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, admin-bar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
-Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 0.2.0
+Requires at least: 3.8
+Tested up to: 4.2.1
+Stable tag: 1.0.0
 
 
 The 'Wp My Admin Bar' Plugin expands on the default Wordpress Admin Bar, adding 3 new quick access menus.
@@ -180,6 +180,11 @@ Custom Settings Tab
 ** NOTE: Disabling this plugin does not remove the options. Deleting the plugin, through Wordpress, deletes the options.
 
 == Changelog ==
+Release
+= 1.0.0 =
+* Restructured the classes, used some old stuff, built some new stuff: In short, made it less stupid.
+* Moved the project to Github: https://github.com/tribalNerd/wp-my-admin-bar
+
 Alpha Release
 = 0.2.0 =
 * Added delete_site_transient when new Websites are created via the Network Admin.
