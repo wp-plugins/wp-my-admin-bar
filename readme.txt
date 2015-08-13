@@ -5,17 +5,19 @@ Donate link: http://technerdia.com/projects/contribute.html
 Tags: myadminbar, wpmyadminbar, plugin, admin, administration, adminbar, admin-bar, toolbar, toolbars, bar, network, multisite, tools, cache, sites, technerdia
 Requires at least: 3.8
 Tested up to: 4.2.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
-The 'Wp My Admin Bar' Plugin expands on the default Wordpress Admin Bar, adding 3 new quick access menus.
+The Wp My Admin Bar Plugin expands on the default Wordpress Admin Bar, adding 3 new custom menus, the ability to show / hide every feature on the Admin Bar, and even the Admin Bar itself.
+
+-- Requires PHP Version 5.4+ or higher!
+
+Project is now on [Github](https://github.com/tribalNerd/wp-my-admin-bar)
 
 == Description ==
 
-The Wp My Admin Bar Plugin expands on the default Wordpress Admin Bar, adding 3 new quick access menus.
+The 'Wp My Admin Bar' Plugin expands on the default Wordpress Admin Bar. Adding three new custom menus (My Sites, My Cache & My Tools), along with the ability to show / hide every feature on the Admin Bar, and even the Admin Bar itself.
 
-The Plugin does not remove or disable the current Admin Bar. The menus are added to the current admin bar, which allows the built in Wordpress security features and Admin Bar features to function as you would expect.
-
--- Requires PHP Version 5.4.0!
+Works on both Standalone Wordpress Installs and Multisite Networks.
 
 ### 3 New Menus:
 
@@ -23,7 +25,14 @@ The Plugin does not remove or disable the current Admin Bar. The menus are added
 * My Cache: Allows for quick access to selected Cache Plugins.
 * My Tools: Web tools for WP Developers and Bloggers.
 
-Other Features Include: Being able to remove the Wordpress Logo from the Admin Bar, remove the Howdy statement and for multisite setups: Remove the WP Icon from the My Sites menu and replace it with Site ID's.
+### Other Features Include:
+
+* Mobile / Portable Device Friendly
+* Remove the Wordpress Logo from the Admin Bar.
+* Remove the Howdy Dropdown, disable the dropdown, or remove features within the dropdown.
+* Disable the dropdown on the Howdy menu.
+* Remove Update Notices, Content menus and the Search Icon from the Frontend.
+* Disable the Admin Bar on the Backend and/or the Frontend.
 
 ### Plugin works with and has been tested on:
 
@@ -31,7 +40,11 @@ Other Features Include: Being able to remove the Wordpress Logo from the Admin B
 * Multisite - Site Activated
 * Standalone Installs (non-multisite)
 
-### Download > Install > Network Activate / Site Activate > Settings (Network / perSite) > Admin Bar
+From the Wordpress Plugin Admin, search for: WP My Admin Bar
+
+### To Install/Activate
+* Download, Install and Activate like any other plugin.
+* Access the Settings Menu > My Admin Bar menu link to setup the Admin Bar.
 
 [Submit Feedback For Improvements](http://technerdia.com/feedback.html) | 
 [Screenshots](http://technerdia.com/projects/adminbar/screenshots.html) | 
@@ -66,9 +79,9 @@ Other Features Include: Being able to remove the Wordpress Logo from the Admin B
 
 ### To Configure:
 
-* Multisite Network: Access the Network Admin > Settings > Admin Bar - Network settings adjust all Websites within the Network.
-* Multisite Standalone Website: Site Dashboard > Settings > Admin Bar - Only adjusts this Websites settings but can be overwritten by Network admin.
-* Standalone Wordpress: Site Dashboard > Settings > Admin Bar - Adjusts this Websites Admin Bar settings.
+* Multisite Network: Access the Network Admin > Settings > WP Admin Bar - Network settings adjust all Websites within the Network.
+* Multisite Standalone Website: Site Dashboard > Settings > WP Admin Bar - Only adjusts this Websites settings but can be overwritten by Network admin.
+* Standalone Wordpress: Site Dashboard > Settings > WP Admin Bar - Adjusts this Websites Admin Bar settings.
 
 
 ### Menu Settings:
@@ -84,22 +97,6 @@ Other Features Include: Being able to remove the Wordpress Logo from the Admin B
 * By default the My Cache menu and options are hidden. (turned off)
 	* Turn on the My Cache menu under the Menu Display Options settings section.
 	* Adjust which cache plugins display under the My Cache Menu Display Options.
-
-
-### Custom Settings (Network, Standalone Activation)
-
-Access the Custom Settings Tab:
-
-* Multisite Networks: Network Admin > Settings > Admin Bar > Custom Settings Tab
-* Multisite Standalone Websites: Dashboard > Settings > Admin Bar > Custom Settings Tab
-* Standalone Wordpress: Dashboard > Settings > Admin Bar > Custom Settings Tab
-
-The Custom Settings Tab allows you to adjust the display of the Wordpress Logo and Howdy statement within the Admin Bar.
-
-For Multisite Setups: Remove the WP Icon from the Menus and replace it with Site ID's. This makes the menus snap open a bit faster.
-
-* Recommended Setting For Networks: Hide the first 3 options (WP logo, Howdy, and WP Icon). Select show for Site ID's.
-
 
 
 == Frequently Asked Questions ==
@@ -164,24 +161,28 @@ A) Yes.
 
 The Option Data display shows you exactly what is being stored on your Wordpress install.
 
-* The "Wp MyAdminBar" option contains the show/hide rules for the My Sites, Cache and Tools Menus.
-* The "My Cache Option" contains the show/hide rules for the My Cache menu.
+* The "Wp MyAdminBar" option contains the show/hide rules for the My Sites, Cache, Tools Menus & all other features on the Admin Bar.
 
-* Output Buffering: The settings pages use ob_gzhandler to compress the output of the settings pages.
-* Transient Cache: Transients are used to store the results of the blog id query that builds the menus.
-
-* References: The Wordpress Functions this Plugin utilizes.
-* Load Time: This was used to make sure I wasn't screwing up..... it's a fun toy, so I left it in.
-
-Custom Settings Tab
-
-* Option Value: Option contains the rules for the Wp Logo, WP Icon, Howdy statement and Site Id's being added to the Menus.
-
+* Transient Cache: Transients are used to store the Option Array.
 
 ** NOTE: Disabling this plugin does not remove the options. Deleting the plugin, through Wordpress, deletes the options.
 
 == Changelog ==
 Release
+= 1.0.3 =
+* Moved the activation, deactivation, uninstall hooks to wp-my-admin-bar.php
+* Moved all option get/set methods to \WPMyAdminBar\Options
+* Adjusted Admin, Hooks, MyCache, MySites, & My Tools to new Options location & methods
+* Set a Network message in \WPMyAdminBar\Admin\Templates\content.php
+* Moved Site & Network notices and plugin links from AdminBar.php to Admin.php
+* Created new updateNewSite() method in \WPMyAdminBar\Admin\Templates\Admin
+* Modified method name get_option to getOption, adjusted in radios.php template
+* Improved the PSR1-4 Standards within everything
+
+= 1.0.2 =
+* Added in PHP Version Compare
+* Modified compare statements
+
 = 1.0.0 =
 * Restructured the classes, used some old stuff, built some new stuff: In short, made it less stupid.
 * Moved the project to Github: https://github.com/tribalNerd/wp-my-admin-bar
